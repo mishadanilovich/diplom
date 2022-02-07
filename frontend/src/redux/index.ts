@@ -1,5 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { authReducer } from './reducers'
+import rootSaga from './sagas'
 
-export default configureStore({
-  reducer: {},
+// @ts-ignore
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const sagaMiddleware = createSagaMiddleware()
+
+const createRootReducer = combineReducers({
+  auth: authReducer,
 })
+
+export type RootState = ReturnType<typeof createRootReducer>
+
+export const store = createStore(
+  createRootReducer,
+  composeEnhancer(applyMiddleware(sagaMiddleware))
+)
+
+sagaMiddleware.run(rootSaga)

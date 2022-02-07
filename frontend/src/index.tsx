@@ -1,13 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './App'
-import { ReduxHoc } from './hoc/ReduxHoc'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import { ReduxHoc, ThemeHoc } from './hoc'
 
 ReactDOM.render(
   <React.StrictMode>
     <ReduxHoc>
-      <App />
+      <ThemeHoc>
+        <App />
+      </ThemeHoc>
     </ReduxHoc>
   </React.StrictMode>,
   document.getElementById('root')
 )
+
+reportWebVitals()
