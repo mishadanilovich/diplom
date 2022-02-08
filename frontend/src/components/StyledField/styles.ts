@@ -11,6 +11,8 @@ export const StyledDiv = styled.div<ErrorProps>`
 `
 
 export const StyledLabel = styled.label`
+  margin-left: 15px;
+  color: ${({ theme }) => theme.colors.labelColor};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -23,7 +25,8 @@ export const StyledLabel = styled.label`
 export const StyledField = styled(Field)<ErrorProps>`
   width: 100%;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 100px;
+  background: ${({ theme }) => theme.colors.lightGray};
   margin-bottom: 20px;
 
   box-shadow: ${({ isError, theme }) =>
