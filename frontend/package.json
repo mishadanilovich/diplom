@@ -37,6 +37,7 @@
     "eject": "react-scripts eject"
   },
   "prettier": {
+    "endOfLine": "crlf",
     "singleQuote": true,
     "printWidth": 80,
     "semi": false
