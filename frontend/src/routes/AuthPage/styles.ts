@@ -9,11 +9,3 @@ export const Container = styled.div`
   row-gap: 20px;
   position: relative;
 `
-
-export const LogoWrapper = styled.div`
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: ${(props) => props.theme.colors.white};
-`
