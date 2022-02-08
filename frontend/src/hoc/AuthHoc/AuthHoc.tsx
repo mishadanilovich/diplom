@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Cookies from 'js-cookie'
-import { AuthPage } from '../../routes'
+// import { AuthPage } from '../../routes'
 import { authenticateSuccess } from '../../redux/actions'
 import { RootState } from '../../redux'
 import { Props } from './types'
@@ -28,5 +28,6 @@ export const AuthHoc = ({ children }: Props): JSX.Element => {
     (state: RootState) => !!state.auth.sessionKey?.length
   )
 
-  return <>{!isLoggedIn ? <AuthPage /> : children}</>
+  // return <>{!isLoggedIn ? <AuthPage /> : children}</>
+  return <>{!isLoggedIn && children}</>
 }

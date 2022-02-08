@@ -1,7 +1,12 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Routes as Switch,
+  Route,
+} from 'react-router-dom'
 import styled from 'styled-components'
 import { AuthHoc } from './hoc'
-import { ConsolePage } from './routes'
+import { NotFoundPage } from './routes/NotFoundPage'
 
 const AppContainer = styled.div`
   display: flex;
@@ -15,7 +20,11 @@ const App: React.FC = () => {
   return (
     <AppContainer>
       <AuthHoc>
-        <ConsolePage />
+        <Router>
+          <Switch>
+            <Route path="*" element={<NotFoundPage />} />
+          </Switch>
+        </Router>
       </AuthHoc>
     </AppContainer>
   )
