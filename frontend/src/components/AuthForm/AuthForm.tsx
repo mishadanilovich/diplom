@@ -1,39 +1,26 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { useDispatch, useSelector } from 'react-redux'
-import { Notification, StyledInput, Button } from '../../components'
-
-import { authenticate } from '../../redux/actions'
-
+import { useSelector } from 'react-redux'
+import { Button } from '../Button'
+import { StyledInput } from '../StyledField'
 import { Values } from './types'
 import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
-import {
-  LOGIN,
-  LOGIN_LABEL,
-  PASSWORD_LABEL,
-  SUB_LOGIN_LABEL,
-} from '../../constants'
+import { LOGIN, EMAIL_LABEL, PASSWORD_LABEL, REGISTER } from '../../constants'
 import { RootState } from '../../redux'
 
 export const AuthForm: React.FC = () => {
-  const dispatch = useDispatch()
-  const { loading, error } = useSelector((state: RootState) => state.auth)
+  const { loading } = useSelector((state: RootState) => state.auth)
 
   const handleSubmit = (values: Values) => {
-    dispatch(authenticate(values))
+    console.log(values)
   }
 
   return (
     <AuthContainer>
-      <h1>API-консолька</h1>
-      {error && (
-        <Notification type="error" header="Вход не вышел" description={error} />
-      )}
       <Formik
         initialValues={{
           login: '',
-          subLogin: '',
           password: '',
         }}
         validationSchema={authValidationSchema}
@@ -44,15 +31,8 @@ export const AuthForm: React.FC = () => {
             <StyledInput
               id="login"
               name="login"
-              textLabel={LOGIN_LABEL}
+              textLabel={EMAIL_LABEL}
               isError={!!errors.login && !!touched.login}
-            />
-            <StyledInput
-              id="subLogin"
-              name="subLogin"
-              textLabel={SUB_LOGIN_LABEL}
-              isError={!!errors.subLogin && !!touched.subLogin}
-              isOptional
             />
             <StyledInput
               id="password"
@@ -64,11 +44,17 @@ export const AuthForm: React.FC = () => {
 
             <Button
               type="submit"
-              className="button-submit"
               disabled={!(Object.keys(errors).length === 0)}
               isLoading={loading}
             >
               {LOGIN}
+            </Button>
+            <Button
+              isSecondary
+              disabled={!(Object.keys(errors).length === 0)}
+              isLoading={loading}
+            >
+              {REGISTER}
             </Button>
           </StyledForm>
         )}
