@@ -3,9 +3,11 @@ export const REQUIRED_FIELD = 'Обязательно для заполнени�
 
 export const LOGIN = 'Войти'
 export const LOGOUT = 'Выйти'
-export const LOGIN_LABEL = 'Логин'
+export const REGISTER = 'Регистрация'
+export const BACK = 'Назад'
+export const CONTINUE = 'Продолжить'
+export const EMAIL_LABEL = 'E-mail'
 export const PASSWORD_LABEL = 'Пароль'
-export const SUB_LOGIN_LABEL = 'Сублогин'
 
 export const SUBMIT_CONSOLE = 'Отправить'
 export const FORMAT_CONSOLE = 'Форматировать'

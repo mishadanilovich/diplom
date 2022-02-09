@@ -4,7 +4,6 @@ import { INCORRECT_PASSWORD, REQUIRED_FIELD } from '../../constants'
 
 export const authValidationSchema = yup.object().shape({
   login: yup.string().required(REQUIRED_FIELD),
-  subLogin: yup.string(),
   password: yup
     .string()
     .required(REQUIRED_FIELD)

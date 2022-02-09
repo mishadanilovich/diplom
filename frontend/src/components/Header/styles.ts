@@ -7,7 +7,7 @@ export const StyledHeader = styled.div`
   min-height: 72px;
   width: 100%;
   padding: 0 22px;
-  border-bottom: ${(props) => props.theme.borders.main};
+  border-bottom: ${(props) => props.theme.borders.header};
 `
 
 export const RightContainer = styled.div`

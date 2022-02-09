@@ -5,22 +5,24 @@ export const theme = {
     white: '#FFFFFF',
     black: '#474747',
     blue: '#0055FB',
-    gray: '#999999',
+    gray: '#E1E1E1',
     red: '#CF2C00',
     green: '#30B800',
     lightBlue: '#45A6FF',
-    lightGray: '#F6F6F6',
+    lightGray: '#F3F2F2',
     lightBlack: 'rgba(0, 0, 0, 0.2)',
     lightBoxShadow: '#0000001A',
     disabled: '#C4C4C4',
+    labelColor: 'rgba(71, 71, 71, 0.8)',
   },
   borders: {
-    main: `2px solid #E1E1E1`,
-    error: '1px solid #CF2C00',
+    main: `1px solid #F3F2F2`,
+    error: '1px solid #EA5128FF',
     success: '1px solid rgba(0, 0, 0, 0.2)',
     blue: '2px solid #45A5FF',
     lightError: '1px solid rgba(0, 0, 0, 0.2)',
     lightBlue: '2px solid rgba(69, 165, 255, 0.5)',
+    header: `2px solid #E1E1E1`,
   },
   boxShadow: {
     error: '0px 0px 5px rgba(207, 44, 0, 0.5)',
@@ -57,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    background: ${theme.colors.lightGray};
+    background: ${theme.colors.white};
   }
 
   h1 {

@@ -7,5 +7,4 @@ export const Container = styled.div`
   justify-content: center;
   width: 100%;
   row-gap: 20px;
-  position: relative;
 `
