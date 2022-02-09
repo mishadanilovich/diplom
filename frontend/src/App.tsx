@@ -7,6 +7,7 @@ import {
 import styled from 'styled-components'
 import { AuthHoc } from './hoc'
 import { NotFoundPage } from './routes/NotFoundPage'
+import { HomePage } from './routes/HomePage'
 
 const AppContainer = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const App: React.FC = () => {
       <AuthHoc>
         <Router>
           <Switch>
+            <Route path="/home" element={<HomePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Switch>
         </Router>

@@ -15,7 +15,7 @@ export const theme = {
     disabled: '#C4C4C4',
   },
   borders: {
-    main: `1px solid rgba(0, 0, 0, 0.2)`,
+    main: `2px solid #E1E1E1`,
     error: '1px solid #CF2C00',
     success: '1px solid rgba(0, 0, 0, 0.2)',
     blue: '2px solid #45A5FF',
