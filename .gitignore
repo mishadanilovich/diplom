@@ -1,1 +1,5 @@
-/.idea
+.idea
+/frontend/.idea
+/frontend/node_modules
+/back/.idea
+/back/node_modules

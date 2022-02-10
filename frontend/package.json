@@ -1,5 +1,5 @@
 {
-  "name": "api-console",
+  "name": "diplom_MDD",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,6 @@
     "fbjs": "^1.0.0",
     "formik": "^2.2.9",
     "js-cookie": "^3.0.1",
-    "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
