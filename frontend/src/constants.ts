@@ -25,3 +25,6 @@ export const DROPDOWN_ACTIONS = [
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   { name: 'Удалить', action: (): void => {}, isDestructive: true },
 ]
+
+export const NOT_FOUND_PAGE_STATUS = '404'
+export const NOT_FOUND_PAGE_TEXT = 'Page not found'

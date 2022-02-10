@@ -3,18 +3,14 @@ import styled from 'styled-components'
 export const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  align-self: flex-start;
+  min-height: 72px;
   width: 100%;
-  padding: 10px 15px;
-  border-bottom: ${(props) => props.theme.borders.main};
+  padding: 0 22px;
+  border-bottom: ${(props) => props.theme.borders.header};
 `
 
-export const Title = styled.div`
+export const RightContainer = styled.div`
   display: flex;
-  align-items: center;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 30px;
-  column-gap: 20px;
+  margin-left: auto;
 `
