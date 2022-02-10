@@ -15,6 +15,10 @@ export const theme = {
     disabled: '#C4C4C4',
     labelColor: 'rgba(71, 71, 71, 0.8)',
   },
+  zIndex: {
+    outSide: 10,
+    modal: 15,
+  },
   borders: {
     main: `1px solid #F3F2F2`,
     error: '1px solid #EA5128FF',

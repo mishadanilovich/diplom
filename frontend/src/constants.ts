@@ -8,6 +8,12 @@ export const BACK = 'Назад'
 export const CONTINUE = 'Продолжить'
 export const EMAIL_LABEL = 'E-mail'
 export const PASSWORD_LABEL = 'Пароль'
+export const ROLE_LABEL = 'Роль'
+
+export const ROLES = [
+  { value: 'student', display: 'Учащийся' },
+  { value: 'teacher', display: 'Преподаватель' },
+]
 
 export const SUBMIT_CONSOLE = 'Отправить'
 export const FORMAT_CONSOLE = 'Форматировать'
