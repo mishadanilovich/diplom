@@ -23,4 +23,11 @@ export const SectionItem = styled.div`
   height: 138px;
   background: ${({ theme }) => theme.colors.lightBlue};
   border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.2s;
+
+  &:active {
+    transform: scale(105%);
+  }
 `

@@ -4,8 +4,6 @@ export const NotFoundPageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: ${({ theme }) =>
-    `2px 120px 40px -30px ${theme.colors.turquoise}`};
 `
 
 export const NotFoundPageContext = styled.div`

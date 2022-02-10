@@ -34,6 +34,7 @@ export const theme = {
     lightGray: '-15px 0 20px 0 rgba(246, 246, 246, 0.8)',
   },
   background: {
+    main: '#F5FFFD',
     hover:
       'linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), linear-gradient(180deg, #45A6FF 0%, #0055FB 100%), #C4C4C4',
     active:
@@ -64,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    background: ${theme.colors.white};
+    background: ${theme.background.main};
   }
 
   h1 {
