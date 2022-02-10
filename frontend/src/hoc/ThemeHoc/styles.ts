@@ -16,6 +16,10 @@ export const theme = {
     labelColor: 'rgba(71, 71, 71, 0.8)',
     turquoise: '#B2FFF1',
   },
+  zIndex: {
+    outSide: 10,
+    modal: 15,
+  },
   borders: {
     main: `1px solid #F3F2F2`,
     error: '1px solid #EA5128FF',
