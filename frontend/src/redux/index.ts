@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
+/* import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { authReducer } from './reducers'
 import rootSaga from './sagas'
@@ -19,4 +19,23 @@ export const store = createStore(
   composeEnhancer(applyMiddleware(sagaMiddleware))
 )
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga)*/
+
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import createSagaMiddleware from 'redux-saga'
+import { authReducer } from './reducers'
+
+const sagaMiddleware = createSagaMiddleware()
+
+const reducer = combineReducers({
+  auth: authReducer,
+})
+
+export const store = configureStore({
+  reducer,
+  middleware: [sagaMiddleware],
+  devTools: true,
+})
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

@@ -2,13 +2,13 @@ import React from 'react'
 import { Logo } from '../../icons'
 
 import { Container } from './styles'
-import { AuthForm } from '../../components'
+import { RegisterForm } from '../../components/RegisterForm'
 
-export const AuthPage = (): JSX.Element => {
+export const RegisterPage = (): JSX.Element => {
   return (
     <Container>
       <Logo />
-      <AuthForm />
+      <RegisterForm />
     </Container>
   )
 }

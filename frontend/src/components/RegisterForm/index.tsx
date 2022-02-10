@@ -6,22 +6,22 @@ import { StyledInput } from '../StyledField'
 import { Values } from './types'
 import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
-import {
-  EMAIL_LABEL,
-  PASSWORD_LABEL,
-  BACK,
-  CONTINUE,
-  ROLE_LABEL,
-  ROLES,
-} from '../../constants'
+import * as naming from '../../constants'
+import * as routes from '../../routes/constantsRoutes'
 import { RootState } from '../../redux'
 import Select from '../Select'
+import { useNavigate } from 'react-router-dom'
 
 export const RegisterForm: React.FC = () => {
   const { loading } = useSelector((state: RootState) => state.auth)
+  const navigate = useNavigate()
 
   const handleSubmit = (values: Values) => {
     console.log(values)
+  }
+
+  const handleClick = () => {
+    navigate(routes.AUTH)
   }
 
   return (
@@ -39,34 +39,35 @@ export const RegisterForm: React.FC = () => {
             <StyledInput
               id="login"
               name="login"
-              textLabel={EMAIL_LABEL}
+              textLabel={naming.EMAIL_LABEL}
               isError={!!errors.login && !!touched.login}
             />
             <StyledInput
               id="password"
               name="password"
-              textLabel={PASSWORD_LABEL}
+              textLabel={naming.PASSWORD_LABEL}
               type="password"
               isError={!!errors.password && !!touched.password}
             />
             <Select
-              onChange={(valer) => console.log(valer)}
-              label={ROLE_LABEL}
-              items={ROLES}
+              onChange={(value) => console.log(value)}
+              label={naming.ROLE_LABEL}
+              items={naming.ROLES}
             />
             <Button
-              type="submit"
+              onClick={handleClick}
               disabled={!(Object.keys(errors).length === 0)}
               isLoading={loading}
             >
-              {CONTINUE}
+              {naming.CONTINUE}
             </Button>
             <Button
+              onClick={handleClick}
               isSecondary
               disabled={!(Object.keys(errors).length === 0)}
               isLoading={loading}
             >
-              {BACK}
+              {naming.BACK}
             </Button>
           </StyledForm>
         )}

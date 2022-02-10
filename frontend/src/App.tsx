@@ -5,9 +5,11 @@ import {
   Route,
 } from 'react-router-dom'
 import styled from 'styled-components'
-import { AuthHoc } from './hoc'
+import * as routes from './routes/constantsRoutes'
 import { NotFoundPage } from './routes/NotFoundPage'
 import { HomePage } from './routes/HomePage'
+import { AuthPage } from './routes'
+import { RegisterPage } from './routes/RegisterPage'
 
 const AppContainer = styled.div`
   display: flex;
@@ -20,14 +22,14 @@ const AppContainer = styled.div`
 const App: React.FC = () => {
   return (
     <AppContainer>
-      <AuthHoc>
-        <Router>
-          <Switch>
-            <Route path="/home" element={<HomePage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Switch>
-        </Router>
-      </AuthHoc>
+      <Router>
+        <Switch>
+          <Route path={routes.HOME} element={<HomePage />} />
+          <Route path={routes.AUTH} element={<AuthPage />} />
+          <Route path={routes.REGISTER} element={<RegisterPage />} />
+          <Route path={routes.ERROR} element={<NotFoundPage />} />
+        </Switch>
+      </Router>
     </AppContainer>
   )
 }
