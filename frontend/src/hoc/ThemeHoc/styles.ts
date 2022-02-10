@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const theme = {
   colors: {
     white: '#FFFFFF',
-    black: '#0D0D0D',
+    black: '#474747',
     blue: '#0055FB',
     gray: '#E1E1E1',
     red: '#CF2C00',
@@ -26,6 +26,7 @@ export const theme = {
     blue: '2px solid #45A5FF',
     lightError: '1px solid rgba(0, 0, 0, 0.2)',
     lightBlue: '2px solid rgba(69, 165, 255, 0.5)',
+    header: `2px solid #E1E1E1`,
   },
   boxShadow: {
     error: '0px 0px 5px rgba(207, 44, 0, 0.5)',

@@ -1,17 +1,14 @@
 import React from 'react'
-import { Logo } from '../../icons'
-import { StyledHeader, Title } from './styles'
-import { APPLICATION_NAME } from '../../constants'
-import { HeaderAction } from './components'
+import { RightContainer, StyledHeader } from './styles'
+import { IconButton } from '../IconButton'
+import { ACCOUNT_CIRCLE } from '../../icons/constants'
 
-export const Header = (): JSX.Element => {
+export const Header = () => {
   return (
     <StyledHeader>
-      <Title>
-        <Logo />
-        <p>{APPLICATION_NAME}</p>
-      </Title>
-      <HeaderAction />
+      <RightContainer>
+        <IconButton iconName={ACCOUNT_CIRCLE} />
+      </RightContainer>
     </StyledHeader>
   )
 }
