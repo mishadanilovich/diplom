@@ -8,12 +8,12 @@ import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
 import * as naming from '../../constants'
 import * as routes from '../../routes/constantsRoutes'
-import { RootState } from '../../redux'
+import { RootState } from '../../store/store'
 import Select from '../Select'
 import { useNavigate } from 'react-router-dom'
 
 export const RegisterForm: React.FC = () => {
-  const { loading } = useSelector((state: RootState) => state.auth)
+  const { isLoading } = useSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
 
   const handleSubmit = (values: Values) => {
@@ -57,7 +57,7 @@ export const RegisterForm: React.FC = () => {
             <Button
               onClick={handleClick}
               disabled={!(Object.keys(errors).length === 0)}
-              isLoading={loading}
+              isLoading={isLoading}
             >
               {naming.CONTINUE}
             </Button>
@@ -65,7 +65,7 @@ export const RegisterForm: React.FC = () => {
               onClick={handleClick}
               isSecondary
               disabled={!(Object.keys(errors).length === 0)}
-              isLoading={loading}
+              isLoading={isLoading}
             >
               {naming.BACK}
             </Button>

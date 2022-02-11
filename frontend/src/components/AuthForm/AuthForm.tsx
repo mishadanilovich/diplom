@@ -1,18 +1,18 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../store/hooks'
 import { Button } from '../Button'
 import { StyledInput } from '../StyledField'
 import { Values } from './types'
 import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
 import * as naming from '../../constants'
-import { RootState } from '../../redux'
+import { RootState } from '../../store/store'
 import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
 
 export const AuthForm: React.FC = () => {
-  const { loading } = useSelector((state: RootState) => state.auth)
+  const { isLoading } = useAppSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
 
   const handleSubmit = (values: Values) => {
@@ -56,7 +56,7 @@ export const AuthForm: React.FC = () => {
             <Button
               onClick={handleClickLogin}
               disabled={!(Object.keys(errors).length === 0)}
-              isLoading={loading}
+              isLoading={isLoading}
             >
               {naming.LOGIN}
             </Button>
@@ -64,7 +64,7 @@ export const AuthForm: React.FC = () => {
               onClick={handleClickRegister}
               isSecondary
               disabled={!(Object.keys(errors).length === 0)}
-              isLoading={loading}
+              isLoading={isLoading}
             >
               {naming.REGISTER}
             </Button>

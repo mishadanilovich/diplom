@@ -11,15 +11,15 @@ import {
 } from './styles'
 
 import { LOGOUT } from '../../../../constants'
-import { logout } from '../../../../redux/actions'
-import { RootState } from '../../../../redux'
+import { RootState } from '../../../../store/store'
+import { reset } from '../../../../hoc/AuthHoc/store/reducer'
 
 export const HeaderAction = (): JSX.Element => {
   const dispatch = useDispatch()
 
   const [widthWindow, setWidthWindow] = useState(window.screen.width)
   const [isFullScreen, setIsFullScreen] = useState(!!document.fullscreenElement)
-  const { login, subLogin } = useSelector((state: RootState) => state.auth)
+  const { token, error } = useSelector((state: RootState) => state.auth)
 
   useEffect(() => {
     window.addEventListener('resize', handleWidth)
@@ -41,17 +41,17 @@ export const HeaderAction = (): JSX.Element => {
   }, [])
 
   const handleLogout = useCallback(() => {
-    dispatch(logout())
+    dispatch(reset())
   }, [])
 
   return (
     <HeaderContainer>
       <UserInfo>
-        {login}
-        {subLogin && (
+        {token}
+        {error && (
           <>
             <Separator>:</Separator>
-            {subLogin}
+            {error}
           </>
         )}
       </UserInfo>

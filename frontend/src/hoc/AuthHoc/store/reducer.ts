@@ -6,6 +6,7 @@ import * as emptySagaActions from './actions'
 const initialState: AppState = {
   token: undefined,
   error: undefined,
+  isLoading: false,
 }
 
 export const AuthReducer = createSlice({

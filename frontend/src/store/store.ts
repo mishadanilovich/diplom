@@ -1,11 +1,8 @@
 import { configureStore, getDefaultMiddleware, Reducer } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import { createBrowserHistory } from 'history'
 
 import { createRootReducer } from './rootReducer'
 import sagas from './rootSaga'
-
-export const history = createBrowserHistory()
 
 const sagaMiddleware = createSagaMiddleware({})
 const middlewares = [sagaMiddleware]
