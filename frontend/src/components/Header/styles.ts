@@ -14,3 +14,7 @@ export const RightContainer = styled.div`
   display: flex;
   margin-left: auto;
 `
+
+export const LeftContainer = styled.div`
+  display: flex;
+`

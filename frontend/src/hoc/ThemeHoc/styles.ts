@@ -15,6 +15,7 @@ export const theme = {
     disabled: '#C4C4C4',
     labelColor: 'rgba(71, 71, 71, 0.8)',
     turquoise: '#B2FFF1',
+    purple: '#AEB4E2',
   },
   zIndex: {
     outSide: 10,
@@ -80,5 +81,12 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     background: none;
+  }
+  
+  .layout-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
   }
 `

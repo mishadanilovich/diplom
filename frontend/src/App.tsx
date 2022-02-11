@@ -10,6 +10,7 @@ import { NotFoundPage } from './routes/NotFoundPage'
 import { HomePage } from './routes/HomePage'
 import { AuthPage } from './routes'
 import { RegisterPage } from './routes/RegisterPage'
+import { RoadmapPage } from './routes/RoadmapPage'
 
 const AppContainer = styled.div`
   display: flex;
@@ -24,9 +25,10 @@ const App: React.FC = () => {
     <AppContainer>
       <Router>
         <Switch>
-          <Route path={routes.HOME} element={<HomePage />} />
           <Route path={routes.AUTH} element={<AuthPage />} />
           <Route path={routes.REGISTER} element={<RegisterPage />} />
+          <Route path={routes.HOME} element={<HomePage />} />
+          <Route path={routes.ROADMAP} element={<RoadmapPage />} />
           <Route path={routes.ERROR} element={<NotFoundPage />} />
         </Switch>
       </Router>
