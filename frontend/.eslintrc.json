@@ -29,7 +29,7 @@
         "prettier"
     ],
     "rules": {
-        "import/extensions": ["error", "never", { "svg": "always", "css": "always" }],
+        "import/extensions": ["warn", "never", { "svg": "always", "css": "always" }],
         "require-jsdoc": ["off"],
         "@typescript-eslint/ban-ts-comment": ["off"],
         "@typescript-eslint/no-explicit-any": ["off"],

@@ -19,7 +19,7 @@ const Select = ({ onChange, items, label }: Props) => {
 
   useEffect(() => {
     onChange(value)
-  }, [value])
+  }, [])
 
   useEffect(() => {
     if (ref.current) {
