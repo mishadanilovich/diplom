@@ -15,12 +15,10 @@ export const AuthForm: React.FC = () => {
   const { isLoading } = useAppSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
 
-  const handleSubmit = (values: Values) => {
-    console.log(values)
-  }
-
-  const handleClickLogin = () => {
-    navigate(routes.HOME)
+  const handleSubmit = ({ login, password }: Values) => {
+    if (login && password) {
+      navigate(routes.HOME)
+    }
   }
 
   const handleClickRegister = () => {
@@ -54,7 +52,7 @@ export const AuthForm: React.FC = () => {
             />
 
             <Button
-              onClick={handleClickLogin}
+              type="submit"
               disabled={!(Object.keys(errors).length === 0)}
               isLoading={isLoading}
             >
@@ -63,7 +61,6 @@ export const AuthForm: React.FC = () => {
             <Button
               onClick={handleClickRegister}
               isSecondary
-              disabled={!(Object.keys(errors).length === 0)}
               isLoading={isLoading}
             >
               {naming.REGISTER}
