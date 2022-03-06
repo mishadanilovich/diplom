@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { Header } from '../../components'
-import { RoadmapContainer, RoadmapItem } from './styles'
+import { Road, RoadmapContainer, RoadmapItem } from './styles'
 
-const mockTopics = [
+const topics = [
   { title: 'Тема' },
   { title: 'Тема' },
   { title: 'Тема' },
@@ -16,12 +16,15 @@ export const RoadmapPage = () => {
   return (
     <div className="layout-container">
       <Header />
-      {mockTopics.length && (
+      {topics.length && (
         <RoadmapContainer ref={roadmap}>
-          {mockTopics.map((_, i) => (
-            <RoadmapItem className="roadmap-item" key={i}>
-              {'Иконка ' + ++i}
-            </RoadmapItem>
+          {topics.map((_, i) => (
+            <React.Fragment key={i}>
+              <RoadmapItem className="roadmap-item">
+                {'Иконка ' + ++i}
+              </RoadmapItem>
+              {topics.length !== i && <Road />}
+            </React.Fragment>
           ))}
         </RoadmapContainer>
       )}

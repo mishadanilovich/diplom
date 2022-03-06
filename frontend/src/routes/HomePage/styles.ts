@@ -5,6 +5,7 @@ export const SectionsContainer = styled.div`
   justify-content: space-between;
   flex-shrink: 1;
   padding: 22px;
+  column-gap: 20px;
 `
 
 export const SectionItem = styled.div`

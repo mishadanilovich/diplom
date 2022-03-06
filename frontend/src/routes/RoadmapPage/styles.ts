@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const RoadmapContainer = styled.div`
-  display: grid;
-  grid-row-gap: 60px;
-  grid-template-columns: 1fr 1fr;
-  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 49px 0;
 
   & .roadmap-item:nth-child(even) {
     justify-self: end;
@@ -15,12 +15,18 @@ export const RoadmapContainer = styled.div`
   }
 `
 
-export const RoadmapItem = styled.span`
+export const RoadmapItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
+  min-height: 70px;
+  width: 100%;
+  border-radius: 5px;
   background: ${({ theme }) => theme.colors.purple};
+`
+
+export const Road = styled.span`
+  min-height: 60px;
+  width: 20px;
+  background: ${({ theme }) => theme.colors.road};
 `

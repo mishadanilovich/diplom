@@ -16,6 +16,7 @@ export const theme = {
     labelColor: 'rgba(71, 71, 71, 0.8)',
     turquoise: '#B2FFF1',
     purple: '#AEB4E2',
+    road: '#BDBDBD',
   },
   zIndex: {
     outSide: 10,
