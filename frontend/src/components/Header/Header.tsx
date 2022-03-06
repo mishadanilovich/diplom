@@ -1,8 +1,14 @@
 import React from 'react'
 import { matchPath, useLocation, useNavigate } from 'react-router-dom'
-import { LeftContainer, RightContainer, StyledHeader } from './styles'
+import * as Lockr from 'lockr'
+import {
+  LeftContainer,
+  RightContainer,
+  StyledHeader,
+  StyledProfileButton,
+} from './styles'
 import { IconButton } from '../IconButton'
-import { ACCOUNT_CIRCLE } from '../../icons/constants'
+import { ACCOUNT_CIRCLE, LOGOUT } from '../../icons/constants'
 import { ArrowBack } from '../../icons'
 import * as routes from '../../routes/constantsRoutes'
 
@@ -14,6 +20,15 @@ export const Header = () => {
     navigate(-1)
   }
 
+  const handleProfileClick = () => {
+    navigate(routes.PROFILE)
+  }
+
+  const handleLogout = () => {
+    Lockr.rm('user')
+    navigate(routes.AUTH)
+  }
+
   return (
     <StyledHeader>
       <LeftContainer>
@@ -22,7 +37,12 @@ export const Header = () => {
         )}
       </LeftContainer>
       <RightContainer>
-        <IconButton iconName={ACCOUNT_CIRCLE} />
+        {!matchPath(pathname, routes.PROFILE) && (
+          <IconButton iconName={ACCOUNT_CIRCLE} onClick={handleProfileClick} />
+        )}
+        {matchPath(pathname, routes.PROFILE) && (
+          <StyledProfileButton iconName={LOGOUT} onClick={handleLogout} />
+        )}
       </RightContainer>
     </StyledHeader>
   )

@@ -1,2 +1,5 @@
 export * from './AuthPage'
-export * from './ConsolePage'
+export * from './NotFoundPage'
+export * from './ProfilePage'
+export * from './RegisterPage'
+export * from './RoadmapPage'

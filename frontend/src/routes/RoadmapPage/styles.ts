@@ -4,7 +4,7 @@ export const RoadmapContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 22px 49px 0;
+  padding: 0 49px 0;
 
   & .roadmap-item:nth-child(even) {
     justify-self: end;

@@ -14,6 +14,7 @@ export const RoadmapPage = () => {
   return (
     <div className="layout-container">
       <Header />
+      <h2>Теория Графов</h2>
       {topics.length && (
         <RoadmapContainer>
           {topics.map((_, i) => (

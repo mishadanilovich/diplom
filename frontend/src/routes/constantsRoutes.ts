@@ -1,5 +1,5 @@
 export const HOME = '/'
 export const AUTH = '/auth'
 export const REGISTER = '/register'
-export const ROADMAP = '/roadmap'
+export const PROFILE = '/profile'
 export const ERROR = '*'

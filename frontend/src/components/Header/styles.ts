@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { IconButton } from '../IconButton'
 
 export const StyledHeader = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ export const StyledHeader = styled.div`
   width: 100%;
   padding: 0 22px;
   border-bottom: ${(props) => props.theme.borders.header};
+  margin-bottom: 22px;
 `
 
 export const RightContainer = styled.div`
@@ -17,4 +19,10 @@ export const RightContainer = styled.div`
 
 export const LeftContainer = styled.div`
   display: flex;
+`
+
+export const StyledProfileButton = styled(IconButton)`
+  & > svg {
+    stroke: ${({ theme }) => theme.colors.darkGray};
+  }
 `

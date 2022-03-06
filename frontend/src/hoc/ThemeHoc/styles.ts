@@ -10,6 +10,7 @@ export const theme = {
     green: '#30B800',
     lightBlue: '#EDF6FF',
     lightGray: '#F3F2F2',
+    darkGray: 'rgba(71, 71, 71)',
     lightBlack: 'rgba(0, 0, 0, 0.2)',
     lightBoxShadow: '#0000001A',
     disabled: '#C4C4C4',
@@ -76,6 +77,16 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 0;
+  }
+  
+  h2 { 
+    font-size: 36px;
+    line-height: 42.19px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    
+    margin-bottom: 30px;
   }
   
   button {
