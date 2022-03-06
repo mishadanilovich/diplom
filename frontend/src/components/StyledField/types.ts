@@ -12,4 +12,5 @@ export interface Props
     ErrorProps {
   isOptional?: boolean
   textLabel?: string
+  errorText?: string
 }

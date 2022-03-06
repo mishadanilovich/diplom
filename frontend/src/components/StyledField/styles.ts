@@ -2,6 +2,11 @@ import styled from 'styled-components'
 import { Field } from 'formik'
 import { ErrorProps } from './types'
 
+export const StyledContainer = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
+`
+
 export const StyledDiv = styled.div<ErrorProps>`
   display: flex;
   justify-content: space-between;
@@ -27,7 +32,6 @@ export const StyledField = styled(Field)<ErrorProps>`
   padding: 5px 10px;
   border-radius: 100px;
   background: ${({ theme }) => theme.colors.lightGray};
-  margin-bottom: 20px;
 
   box-shadow: ${({ isError, theme }) =>
     isError ? theme.boxShadow.error : 'none'};
@@ -52,4 +56,11 @@ export const OptionalLabel = styled.span`
   letter-spacing: 0;
   margin-bottom: 5px;
   margin-left: auto;
+`
+
+export const StyledErrorText = styled.p`
+  font-size: 11px;
+  margin-top: 5px;
+  margin-left: 15px;
+  color: ${({ theme }) => theme.colors.red};
 `

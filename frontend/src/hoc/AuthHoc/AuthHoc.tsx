@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react'
+import * as Lockr from 'lockr'
 import { Props } from './types'
-import { useAppSelector } from '../../store/hooks'
-import { getTokenAndError } from './store/selector'
 import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
 
 export const AuthHoc = ({ children }: Props): JSX.Element => {
   const navigate = useNavigate()
-  const { token } = useAppSelector(getTokenAndError)
+  const isAuth = Lockr.get('user')
 
   useEffect(() => {
-    if (!token) {
-      console.log(token)
-      navigate(routes.AUTH)
-    }
-  }, [token])
+    if (!isAuth) navigate(routes.AUTH)
+    else navigate(routes.HOME)
+  }, [isAuth])
 
   return <>{children}</>
 }

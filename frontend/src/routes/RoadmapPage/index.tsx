@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Header } from '../../components'
 import { Road, RoadmapContainer, RoadmapItem } from './styles'
 
@@ -11,13 +11,11 @@ const topics = [
 ]
 
 export const RoadmapPage = () => {
-  const roadmap = useRef<HTMLDivElement>(null)
-
   return (
     <div className="layout-container">
       <Header />
       {topics.length && (
-        <RoadmapContainer ref={roadmap}>
+        <RoadmapContainer>
           {topics.map((_, i) => (
             <React.Fragment key={i}>
               <RoadmapItem className="roadmap-item">
