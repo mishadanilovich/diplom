@@ -7,6 +7,7 @@ const initialState: AppState = {
   token: undefined,
   error: undefined,
   isLoading: false,
+  user: null,
 }
 
 export const AuthReducer = createSlice({

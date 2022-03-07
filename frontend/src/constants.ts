@@ -10,6 +10,7 @@ export const CONTINUE = 'Продолжить'
 export const EMAIL_LABEL = 'E-mail'
 export const PASSWORD_LABEL = 'Пароль'
 export const ROLE_LABEL = 'Роль'
+export const BUTTON_READY = 'Готово'
 
 export const ROLES = [
   { value: 'student', display: 'Учащийся' },
@@ -19,7 +20,7 @@ export const ROLES = [
 export const SUBMIT_CONSOLE = 'Отправить'
 export const FORMAT_CONSOLE = 'Форматировать'
 
-export const APPLICATION_NAME = 'API-консолька'
+export const APPLICATION_NAME = 'Теория Графов'
 
 export const CONSOLE_QUERY_TITLE = 'Запрос:'
 export const CONSOLE_RESPONSE_TITLE = 'Ответ:'

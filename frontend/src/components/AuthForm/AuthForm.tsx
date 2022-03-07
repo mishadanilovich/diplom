@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik } from 'formik'
+import { Formik, FormikHelpers } from 'formik'
 import { useAppSelector } from '../../store/hooks'
 import { Button } from '../Button'
 import { StyledInput } from '../StyledField'
@@ -17,7 +17,10 @@ export const AuthForm: React.FC = () => {
   const { isLoading } = useAppSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
 
-  const handleSubmit = ({ login, password }: Values) => {
+  const handleSubmit = (
+    { login, password }: Values,
+    { setFieldError }: FormikHelpers<Values>
+  ) => {
     if (login && password) {
       const tempUsers: Users | null = Lockr.get('users')
       if (tempUsers) {
@@ -27,6 +30,8 @@ export const AuthForm: React.FC = () => {
           Lockr.set('user', login)
           navigate(routes.HOME)
         }
+        if (user && user.password !== password)
+          setFieldError('password', naming.INCORRECT_PASSWORD)
       }
     }
   }
