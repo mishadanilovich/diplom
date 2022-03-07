@@ -11,9 +11,16 @@ export interface Teacher {
   role: string
 }
 
+export interface Users {
+  students?: Student[]
+  teachers?: Teacher[]
+}
+
 export interface AppState {
   token?: string
   error?: string
   isLoading: boolean
   user?: Student | Teacher | null
+  password?: string
+  login?: string
 }

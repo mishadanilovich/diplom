@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, FormikHelpers } from 'formik'
-import { useAppSelector } from '../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { Button } from '../Button'
 import { StyledInput } from '../StyledField'
 import { Values } from './types'
@@ -12,8 +12,10 @@ import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
 import * as Lockr from 'lockr'
 import { Users } from '../RegisterForm/types'
+import { loginRequest } from '../../hoc/AuthHoc/store/actions'
 
 export const AuthForm: React.FC = () => {
+  const dispatch = useAppDispatch()
   const { isLoading } = useAppSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
 
@@ -21,6 +23,7 @@ export const AuthForm: React.FC = () => {
     { login, password }: Values,
     { setFieldError }: FormikHelpers<Values>
   ) => {
+    dispatch(loginRequest({ login, password }))
     if (login && password) {
       const tempUsers: Users | null = Lockr.get('users')
       if (tempUsers) {

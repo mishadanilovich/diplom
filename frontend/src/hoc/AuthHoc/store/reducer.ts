@@ -8,12 +8,18 @@ const initialState: AppState = {
   error: undefined,
   isLoading: false,
   user: null,
+  password: '',
+  login: '',
 }
 
 export const AuthReducer = createSlice({
   name: AUTH_REDUCER,
   initialState,
   reducers: {
+    save: (state, { payload }) => {
+      state.login = payload.login
+      state.password = payload.password
+    },
     reset: (state: AppState) => {
       state.token = undefined
     },
@@ -29,6 +35,6 @@ export const AuthReducer = createSlice({
 
 const allActions = { ...AuthReducer.actions, ...emptySagaActions }
 
-export const { reset, loginSuccess, loginFailed } = allActions
+export const { reset, loginSuccess, save, loginFailed } = allActions
 
 export default AuthReducer.reducer

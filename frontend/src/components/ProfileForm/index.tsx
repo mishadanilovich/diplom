@@ -7,8 +7,7 @@ import { StyledForm } from '../AuthForm/styles'
 import * as naming from '../../constants'
 import { Button } from '../Button'
 import { validationSchema } from './validationSchema'
-// import Select from '../Select'
-import { Teacher } from '../../hoc/AuthHoc/store/types'
+import { Teacher, Users } from '../../hoc/AuthHoc/store/types'
 import { Teachers } from './types'
 
 export const ProfileForm = () => {
@@ -16,7 +15,8 @@ export const ProfileForm = () => {
   console.log(teachers)
 
   useEffect(() => {
-    const tempTeachers: Teacher[] | null = Lockr.get('users').teachers
+    const tempTeachers: Teacher[] | null =
+      Lockr.get<Users>('users')?.teachers || null
     if (tempTeachers)
       setTeachers(
         tempTeachers.map((el) => ({ value: el.login, display: el.login }))
