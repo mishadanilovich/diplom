@@ -37,7 +37,6 @@ export const StyledField = styled(Field)<ErrorProps>`
     isError ? theme.boxShadow.error : 'none'};
   border: ${({ isError, theme }) =>
     isError ? theme.borders.error : theme.borders.main};
-  outline: none;
 
   font-family: ${(props) => props.theme.fonts[0]};
   font-size: 18px;

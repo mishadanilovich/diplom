@@ -9,6 +9,7 @@ import { Button } from '../Button'
 import { validationSchema } from './validationSchema'
 import { Teacher, Users } from '../../hoc/AuthHoc/store/types'
 import { Teachers } from './types'
+import { InputSelect } from '../InputSelect'
 
 export const ProfileForm = () => {
   const [teachers, setTeachers] = useState<Teachers[] | null>(null)
@@ -54,11 +55,11 @@ export const ProfileForm = () => {
               name="roles"
               id="roles"
             />
-            {/* <Select*/}
-            {/*  onChange={({ value }) => setFieldValue('teacher', value)}*/}
-            {/*  label={naming.ROLE_LABEL}*/}
-            {/*  items={teachers}*/}
-            {/* />*/}
+            <InputSelect
+              onChange={({ value }) => setFieldValue('teacher', value)}
+              label={naming.ROLE_LABEL}
+              items={teachers}
+            />
             <Button
               type="submit"
               disabled={!(Object.keys(errors).length === 0)}
