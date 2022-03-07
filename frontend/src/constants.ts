@@ -1,6 +1,7 @@
 export const INCORRECT_PASSWORD = 'Неккоректный пароль'
 export const REQUIRED_FIELD = 'Обязательно для заполнения'
 export const RECURRING_MAIL = 'Пользователь с такой почтой уже существует'
+export const NON_EXISTENT_USER = 'Пользователя с такой почтой не существует'
 
 export const LOGIN = 'Войти'
 export const LOGOUT = 'Выйти'

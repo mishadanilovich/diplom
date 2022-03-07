@@ -7,36 +7,21 @@ import { Values } from './types'
 import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
 import * as naming from '../../constants'
-import { RootState } from '../../store/store'
 import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
-import * as Lockr from 'lockr'
-import { Users } from '../RegisterForm/types'
 import { loginRequest } from '../../hoc/AuthHoc/store/actions'
+import { getLoading } from '../../hoc/AuthHoc/store/selector'
 
 export const AuthForm: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { isLoading } = useAppSelector((state: RootState) => state.auth)
+  const isLoading = useAppSelector(getLoading)
   const navigate = useNavigate()
 
   const handleSubmit = (
     { login, password }: Values,
-    { setFieldError }: FormikHelpers<Values>
+    formikHelpers: FormikHelpers<Values>
   ) => {
-    dispatch(loginRequest({ login, password }))
-    if (login && password) {
-      const tempUsers: Users | null = Lockr.get('users')
-      if (tempUsers) {
-        const users = [...tempUsers?.students, ...tempUsers?.teachers]
-        const user = users?.find((el) => el.login === login)
-        if (user && user.password === password) {
-          Lockr.set('user', login)
-          navigate(routes.HOME)
-        }
-        if (user && user.password !== password)
-          setFieldError('password', naming.INCORRECT_PASSWORD)
-      }
-    }
+    dispatch(loginRequest({ login, password, formikProps: formikHelpers }))
   }
 
   const handleClickRegister = () => {
