@@ -12,8 +12,8 @@ export interface Teacher {
 }
 
 export interface Users {
-  students?: Student[]
-  teachers?: Teacher[]
+  students?: User[]
+  teachers?: User[]
 }
 
 export interface AppState {
@@ -23,11 +23,16 @@ export interface AppState {
   user?: Student | Teacher | null
 }
 
-export interface Action<T> {
-  type: string
-  payload?: T
-}
-
 export interface IdentifyUser {
   login: string
+}
+
+export interface User {
+  login: string
+  password: string
+  firstName: string
+  secondName: string
+  role: string
+  teacher?: string
+  avatarURL?: string
 }

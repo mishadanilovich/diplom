@@ -2,10 +2,10 @@ import React from 'react'
 import { Formik, FormikHelpers } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { Button } from '../Button'
-import { StyledInput } from '../StyledField'
+import { StyledInput } from '../StyledInput'
 import { Values } from './types'
 import { authValidationSchema } from './authFormValidation'
-import { AuthContainer, StyledForm } from './styles'
+import { AuthContainer, StyledButtonsContainer, StyledForm } from './styles'
 import * as naming from '../../constants'
 import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
@@ -55,21 +55,22 @@ export const AuthForm: React.FC = () => {
               isError={!!errors.password && !!touched.password}
               errorText={errors.password}
             />
-
-            <Button
-              type="submit"
-              disabled={!(Object.keys(errors).length === 0)}
-              isLoading={isLoading}
-            >
-              {naming.LOGIN}
-            </Button>
-            <Button
-              onClick={handleClickRegister}
-              isSecondary
-              isLoading={isLoading}
-            >
-              {naming.REGISTER}
-            </Button>
+            <StyledButtonsContainer>
+              <Button
+                type="submit"
+                disabled={!(Object.keys(errors).length === 0)}
+                isLoading={isLoading}
+              >
+                {naming.LOGIN}
+              </Button>
+              <Button
+                onClick={handleClickRegister}
+                isSecondary
+                isLoading={isLoading}
+              >
+                {naming.REGISTER}
+              </Button>
+            </StyledButtonsContainer>
           </StyledForm>
         )}
       </Formik>

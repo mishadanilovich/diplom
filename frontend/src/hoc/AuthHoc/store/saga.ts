@@ -1,19 +1,15 @@
-import { takeLatest, put, delay } from 'redux-saga/effects'
+import { takeLatest, put } from 'redux-saga/effects'
 import * as Lockr from 'lockr'
 import { identifyUser, loginRequest, registerRequest } from './actions'
 import { Users } from '../../../components/RegisterForm/types'
 import * as naming from '../../../constants'
 import * as routes from '../../../routes/constantsRoutes'
 import { Login, Register } from '../../../components/AuthForm/types'
-import { Action, IdentifyUser, Student, Teacher } from './types'
-import { setLoading, setUserData } from './reducer'
+import { IdentifyUser, Student, Teacher } from './types'
+import { setUserData } from './reducer'
 import { RECURRING_MAIL } from '../../../constants'
-
-function* setUsersRequest() {
-  yield put(setLoading(true))
-  yield delay(2000)
-  yield put(setLoading(false))
-}
+import { Action } from '../../../store/types'
+import { request, setUser } from '../../../store/sagas'
 
 function* getUser({ payload }: Action<IdentifyUser>) {
   const { login } = payload || {}
@@ -34,10 +30,7 @@ function* loginUser({ payload }: Action<Login>) {
       const user = users?.find((el) => el.login === login) as Teacher | Student
       if (user && user.password === password) {
         Lockr.set('user', login)
-        yield put(setLoading(true))
-        yield delay(3000)
-        yield put(setUserData(user))
-        yield put(setLoading(false))
+        yield setUser(user)
       }
       if (user && user.password !== password)
         formikProps.setFieldError('password', naming.INCORRECT_PASSWORD)
@@ -49,7 +42,7 @@ function* loginUser({ payload }: Action<Login>) {
 function* registerUser({ payload }: Action<Register>) {
   const { login, password, roles, formikProps, navigate } = payload || {}
   if (login && roles && password && formikProps && navigate) {
-    const newUserType = roles === 'student' ? 'students' : 'teachers'
+    const newUserType = roles === naming.STUDENT ? 'students' : 'teachers'
     const users: Users | null = Lockr.get('users')
 
     if (users) {
@@ -63,7 +56,7 @@ function* registerUser({ payload }: Action<Register>) {
           { login, password, role: roles },
         ]
         Lockr.set('users', users)
-        yield setUsersRequest()
+        yield request()
         navigate(routes.AUTH)
       }
     } else {
@@ -73,7 +66,7 @@ function* registerUser({ payload }: Action<Register>) {
       }
       users[newUserType] = [{ login, password, role: roles }]
       Lockr.set('users', users)
-      yield setUsersRequest()
+      yield request()
       navigate(routes.AUTH)
     }
   }

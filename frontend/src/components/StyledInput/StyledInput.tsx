@@ -16,15 +16,21 @@ const StyledInput = React.memo(
     isError = false,
     errorText,
     id,
+    children,
     ...props
   }: Props): JSX.Element => {
     return (
       <StyledContainer>
-        <StyledDiv isError={isError}>
-          {textLabel && <StyledLabel htmlFor={id}>{textLabel}</StyledLabel>}
-          {isOptional && <OptionalLabel>Опцонально</OptionalLabel>}
-        </StyledDiv>
-        <StyledField id={id} name="login" isError={isError} {...props} />
+        {!(!textLabel && !isOptional) && (
+          <StyledDiv isError={isError}>
+            {textLabel && <StyledLabel htmlFor={id}>{textLabel}</StyledLabel>}
+            {isOptional && <OptionalLabel>Опцонально</OptionalLabel>}
+          </StyledDiv>
+        )}
+        <div style={{ position: 'relative' }}>
+          <StyledField id={id} name="login" isError={isError} {...props} />
+          {children}
+        </div>
         {isError && errorText && <StyledErrorText>{errorText}</StyledErrorText>}
       </StyledContainer>
     )

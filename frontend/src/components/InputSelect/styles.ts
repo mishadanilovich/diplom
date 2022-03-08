@@ -23,7 +23,6 @@ export const StyledSelect = styled.div`
 export const StyledInputContainer = styled.div`
   flex: 1;
   width: 100%;
-  position: relative;
 `
 
 export const StyledInput = styled.input`
@@ -31,6 +30,7 @@ export const StyledInput = styled.input`
   width: 100%;
   padding: 5px 10px;
   border-radius: 100px;
+  color: ${({ theme }) => theme.colors.black};
   background: ${({ theme }) => theme.colors.lightGray};
   border: 1px solid ${({ theme }) => theme.colors.lightGray};
   font-size: 18px;
@@ -51,7 +51,7 @@ export const StyledArrow = styled.span<{ isOpen: boolean }>`
 
 export const StyledItemsContainer = styled.div<{ bottom: number }>`
   align-items: center;
-  width: 65%;
+  width: calc(100% - 14px);
   background: ${({ theme }) => theme.colors.lightGray};
   position: absolute;
   z-index: ${({ theme }) => theme.zIndex.modal};

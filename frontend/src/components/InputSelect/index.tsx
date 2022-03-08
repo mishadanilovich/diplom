@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Props } from './types'
+import { Items, Props } from './types'
 import {
   Separator,
   StyledArrow,
-  StyledInput,
   StyledInputContainer,
   StyledItem,
   StyledItemsContainer,
@@ -12,14 +11,30 @@ import {
   StyledSelect,
 } from './styles'
 import { Arrow } from '../../icons/Arrow'
+import { StyledInput } from '../StyledInput'
 
-export const InputSelect = ({ onChange, items, label }: Props) => {
+export const InputSelect = ({
+  onChange,
+  items,
+  label,
+  defaultPlaceholder,
+  value,
+  formikProps,
+  name,
+}: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
-  const [inputValue, setInputValue] = useState<string>(
-    items ? 'Нет преподавателей' : ''
-  )
+  const [options, setOptions] = useState<Items[] | null>(items)
+  const [inputValue, setInputValue] = useState('')
   const [bottom, setBottom] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
+  const { errors, touched } = formikProps
+
+  useEffect(() => {
+    setOptions(items)
+    if (!items?.length && defaultPlaceholder) setInputValue(defaultPlaceholder)
+    else if (value) setInputValue(value)
+    else setInputValue('')
+  }, [items])
 
   useEffect(() => {
     if (ref.current) {
@@ -34,14 +49,15 @@ export const InputSelect = ({ onChange, items, label }: Props) => {
   }, [])
 
   const handleInputFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isOpen) setIsOpen(true)
-    console.log(e.target.value)
+    if (value) onChange({ display: '', value: '' })
+    if (!isOpen && options?.length) setIsOpen(true)
     setInputValue(e.target.value)
+    if (items)
+      setOptions(items?.filter((el) => el.display.includes(e.target.value)))
   }
 
   const outsideDiv = <StyledOutside onClick={() => setIsOpen(false)} />
 
-  console.log(isOpen, items)
   return (
     <>
       {isOpen && outsideDiv}
@@ -49,22 +65,29 @@ export const InputSelect = ({ onChange, items, label }: Props) => {
         <StyledLabel>{label}</StyledLabel>
         <StyledInputContainer>
           <StyledInput
-            onClick={() => setIsOpen(true)}
-            onChange={(e) => handleInputFilter(e)}
+            id={name}
+            name={name}
             value={inputValue}
-          />
-          <StyledArrow isOpen={isOpen}>
-            <Arrow />
-          </StyledArrow>
+            onChange={(e) => handleInputFilter(e)}
+            onClick={() => options?.length && setIsOpen(true)}
+            disabled={!items?.length}
+            errorText={errors[name]}
+            isError={!!errors[name] && !!touched[name]}
+            autoComplete="off"
+          >
+            <StyledArrow isOpen={isOpen}>
+              <Arrow />
+            </StyledArrow>
+          </StyledInput>
         </StyledInputContainer>
-        {isOpen && items && (
+        {isOpen && !!options?.length && (
           <StyledItemsContainer bottom={bottom}>
-            {items.map(({ display, value }, index) => (
+            {options.map(({ display, value }, index) => (
               <React.Fragment key={value}>
                 <StyledItem onClick={() => handleClick({ display, value })}>
                   {display}
                 </StyledItem>
-                {index !== items?.length - 1 && <Separator />}
+                {index !== options?.length - 1 && <Separator />}
               </React.Fragment>
             ))}
           </StyledItemsContainer>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, FormikHelpers } from 'formik'
 import { Button } from '../Button'
-import { StyledInput } from '../StyledField'
+import { StyledInput } from '../StyledInput'
 import { User } from './types'
 import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
