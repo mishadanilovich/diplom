@@ -35,3 +35,5 @@ export const NOT_FOUND_PAGE_TEXT = 'Page not found'
 
 export const STUDENT = 'student'
 export const TEACHER = 'teacher'
+
+export const FIRST_SIGN_IN = 'Заполните профиль!'

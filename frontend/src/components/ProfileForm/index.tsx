@@ -1,11 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Formik, FormikProps } from 'formik'
 import * as Lockr from 'lockr'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { StyledInput } from '../StyledInput'
-import { StyledProfileContainer, SubmitButton, StyledForm } from './styles'
+import {
+  StyledProfileContainer,
+  SubmitButton,
+  StyledForm,
+  StyledToastContainer,
+} from './styles'
 import * as naming from '../../constants'
 import { validationSchema, validate } from './validation'
-import { Teacher, User, Users } from '../../hoc/AuthHoc/store/types'
 import { Teachers, Values } from './types'
 import { InputSelect } from '../InputSelect'
 import { Done } from '../../icons'
@@ -13,6 +19,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { getLoading, getUser } from '../../hoc/AuthHoc/store/selector'
 import { Avatar } from '../Avatar'
 import { updateUser } from './store/actions'
+import { Teacher, User, Users } from '../../hoc/AuthHoc/store/types'
 
 export const ProfileForm = () => {
   const [teachers, setTeachers] = useState<Teachers[]>([])
@@ -27,6 +34,11 @@ export const ProfileForm = () => {
       setTeachers(
         tempTeachers.map((el) => ({ value: el.login, display: el.login }))
       )
+  }, [])
+
+  useEffect(() => {
+    if (!(user.firstName && user.secondName))
+      toast.info(naming.FIRST_SIGN_IN, { position: 'top-right' })
   }, [])
 
   const initialValues = useMemo<Values>(
@@ -127,6 +139,7 @@ export const ProfileForm = () => {
           </StyledForm>
         )}
       </Formik>
+      <StyledToastContainer position="top-left" autoClose={2400} />
     </StyledProfileContainer>
   )
 }

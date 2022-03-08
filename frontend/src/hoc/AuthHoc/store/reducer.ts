@@ -21,7 +21,7 @@ export const AuthReducer = createSlice({
       state.isLoading = payload
     },
     reset: (state: AppState) => {
-      state.token = undefined
+      state.user = null
     },
     loginSuccess: (state, { payload }) => {
       state.token = payload?.token

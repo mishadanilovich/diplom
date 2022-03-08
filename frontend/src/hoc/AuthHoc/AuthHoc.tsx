@@ -16,14 +16,13 @@ export const AuthHoc = ({ children }: Props): JSX.Element => {
   console.log(user)
 
   useEffect(() => {
-    if (!isAuth) navigate(routes.AUTH)
-    else {
-      dispatch(identifyUser({ login: isAuth }))
-    }
+    if (isAuth) dispatch(identifyUser({ login: isAuth }))
   }, [isAuth])
 
   useEffect(() => {
-    if (user) navigate(routes.HOME)
+    if (!isAuth) navigate(routes.AUTH)
+    else if (user && user.firstName && user.secondName) navigate(routes.HOME)
+    else navigate(routes.PROFILE)
   }, [user])
 
   return <>{children}</>
