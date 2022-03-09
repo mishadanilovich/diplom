@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Form } from 'formik'
 
 export const AuthContainer = styled.div`
   display: flex;
@@ -9,12 +8,6 @@ export const AuthContainer = styled.div`
   max-width: 520px;
   padding: 40px 30px;
   border-radius: 5px;
-`
-
-export const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `
 
 export const StyledLabel = styled.label`

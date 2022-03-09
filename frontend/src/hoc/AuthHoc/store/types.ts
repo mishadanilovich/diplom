@@ -1,3 +1,5 @@
+import { Topics } from '../../../routes/RoadmapPage/types'
+
 export interface Student {
   login: string
   password: string
@@ -35,4 +37,5 @@ export interface User {
   role: string
   teacher?: string
   avatarURL?: string
+  topics?: Topics
 }

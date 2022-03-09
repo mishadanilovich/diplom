@@ -9,16 +9,7 @@ export const StyledProfileContainer = styled.div`
 `
 
 export const SubmitButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-top: auto;
-  column-gap: 12px;
-  color: ${({ theme }) => theme.colors.black};
-  font-style: normal;
-  font-weight: normal;
-  font-size: 21px;
-  line-height: 25px;
 
   &:disabled {
     opacity: 70%;
