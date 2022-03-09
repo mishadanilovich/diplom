@@ -1,6 +1,6 @@
-import { ProfileUser } from '../types'
+import { Topics } from '../../../routes/RoadmapPage/types'
 
-export interface UpdateData extends ProfileUser {
+export interface UpdateData {
+  topics: Topics
   login: string
-  password: string
 }

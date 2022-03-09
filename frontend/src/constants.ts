@@ -32,6 +32,7 @@ export const APPLICATION_NAME = 'Теория Графов'
 
 export const NOT_FOUND_PAGE_STATUS = '404'
 export const NOT_FOUND_PAGE_TEXT = 'Page not found'
+export const TOPICS_NOT_FOUND = 'Нет доступных тем!'
 
 export const STUDENT = 'student'
 export const TEACHER = 'teacher'
