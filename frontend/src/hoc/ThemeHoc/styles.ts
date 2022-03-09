@@ -101,4 +101,17 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `

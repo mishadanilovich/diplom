@@ -1,10 +1,10 @@
 import React from 'react'
-import { Formik, FormikHelpers } from 'formik'
+import { Formik, FormikHelpers, Form } from 'formik'
 import { Button } from '../Button'
 import { StyledInput } from '../StyledInput'
 import { User } from './types'
 import { authValidationSchema } from './authFormValidation'
-import { AuthContainer, StyledForm } from './styles'
+import { AuthContainer } from './styles'
 import * as naming from '../../constants'
 import * as routes from '../../routes/constantsRoutes'
 import Select from '../Select'
@@ -50,7 +50,7 @@ export const RegisterForm: React.FC = () => {
       >
         {({ errors, touched, setFieldValue }) => {
           return (
-            <StyledForm>
+            <Form className={'form'}>
               <StyledInput
                 id="login"
                 name="login"
@@ -77,17 +77,24 @@ export const RegisterForm: React.FC = () => {
                 label={naming.ROLE_LABEL}
                 items={naming.ROLES}
               />
-              <Button
-                type="submit"
-                disabled={!(Object.keys(errors).length === 0)}
-                isLoading={isLoading}
-              >
-                {naming.CONTINUE}
-              </Button>
-              <Button onClick={handleClick} isSecondary isLoading={isLoading}>
-                {naming.BACK}
-              </Button>
-            </StyledForm>
+              <div className={'flex-center'}>
+                <Button
+                  type="submit"
+                  disabled={!(Object.keys(errors).length === 0)}
+                  isLoading={isLoading}
+                >
+                  {naming.CONTINUE}
+                </Button>
+                <Button
+                  onClick={handleClick}
+                  isSecondary
+                  isLoading={isLoading}
+                  style={{ minWidth: 'fit-content' }}
+                >
+                  {naming.BACK}
+                </Button>
+              </div>
+            </Form>
           )
         }}
       </Formik>

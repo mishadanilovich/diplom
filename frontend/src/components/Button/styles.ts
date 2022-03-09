@@ -18,7 +18,7 @@ export const StyledButton = styled.button<Props>`
   color: ${({ theme }) => theme.colors.black};
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: ${({ isSecondary = false }) => (isSecondary ? '14px' : '18px')};
   line-height: 25px;
 
   &:focus {
@@ -35,5 +35,6 @@ export const StyledButton = styled.button<Props>`
   }
 
   &:disabled {
+    opacity: 70%;
   }
 `
