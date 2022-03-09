@@ -4,7 +4,6 @@ import { ErrorProps } from './types'
 
 export const StyledContainer = styled.div`
   width: 100%;
-  margin-bottom: 20px;
 `
 
 export const StyledDiv = styled.div<ErrorProps>`
@@ -29,6 +28,7 @@ export const StyledLabel = styled.label`
 
 export const StyledField = styled(Field)<ErrorProps>`
   width: 100%;
+  color: ${({ theme }) => theme.colors.black};
   padding: 5px 10px;
   border-radius: 100px;
   background: ${({ theme }) => theme.colors.lightGray};
@@ -37,7 +37,7 @@ export const StyledField = styled(Field)<ErrorProps>`
     isError ? theme.boxShadow.error : 'none'};
   border: ${({ isError, theme }) =>
     isError ? theme.borders.error : theme.borders.main};
-  outline: none;
+  outline: ${({ isError }) => (isError ? 'none' : 'default')};
 
   font-family: ${(props) => props.theme.fonts[0]};
   font-size: 18px;

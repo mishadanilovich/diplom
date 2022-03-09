@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { AUTH_REDUCER } from './constants'
-import { AppState } from './types'
+import { AppState, Student, Teacher } from './types'
 import * as emptySagaActions from './actions'
 
 const initialState: AppState = {
@@ -8,20 +8,20 @@ const initialState: AppState = {
   error: undefined,
   isLoading: false,
   user: null,
-  password: '',
-  login: '',
 }
 
 export const AuthReducer = createSlice({
   name: AUTH_REDUCER,
   initialState,
   reducers: {
-    save: (state, { payload }) => {
-      state.login = payload.login
-      state.password = payload.password
+    setUserData: (state, { payload }: { payload: Student | Teacher }) => {
+      state.user = payload
+    },
+    setLoading: (state, { payload }: { payload: boolean }) => {
+      state.isLoading = payload
     },
     reset: (state: AppState) => {
-      state.token = undefined
+      state.user = null
     },
     loginSuccess: (state, { payload }) => {
       state.token = payload?.token
@@ -35,6 +35,7 @@ export const AuthReducer = createSlice({
 
 const allActions = { ...AuthReducer.actions, ...emptySagaActions }
 
-export const { reset, loginSuccess, save, loginFailed } = allActions
+export const { reset, loginSuccess, setUserData, setLoading, loginFailed } =
+  allActions
 
 export default AuthReducer.reducer

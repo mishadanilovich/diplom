@@ -3,18 +3,27 @@ import * as Lockr from 'lockr'
 import { Props } from './types'
 import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
-// import { useAppSelector } from '../../store/hooks'
-// import { RootState } from '../../store/store'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { getUser } from './store/selector'
+import { identifyUser } from './store/actions'
 
 export const AuthHoc = ({ children }: Props): JSX.Element => {
   const navigate = useNavigate()
-  // const { isLoading } = useAppSelector((state: RootState) => state.auth)
-  const isAuth = Lockr.get('user')
+  const user = useAppSelector(getUser)
+  const dispatch = useAppDispatch()
+  const isAuth = Lockr.get<string | null>('user')
+
+  console.log(user)
+
+  useEffect(() => {
+    if (isAuth) dispatch(identifyUser({ login: isAuth }))
+  }, [isAuth])
 
   useEffect(() => {
     if (!isAuth) navigate(routes.AUTH)
-    else navigate(routes.HOME)
-  }, [isAuth])
+    else if (user && user.firstName && user.secondName) navigate(routes.HOME)
+    else navigate(routes.PROFILE)
+  }, [user])
 
   return <>{children}</>
 }

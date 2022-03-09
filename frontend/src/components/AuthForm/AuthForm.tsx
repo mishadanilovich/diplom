@@ -2,41 +2,26 @@ import React from 'react'
 import { Formik, FormikHelpers } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { Button } from '../Button'
-import { StyledInput } from '../StyledField'
+import { StyledInput } from '../StyledInput'
 import { Values } from './types'
 import { authValidationSchema } from './authFormValidation'
-import { AuthContainer, StyledForm } from './styles'
+import { AuthContainer, StyledButtonsContainer, StyledForm } from './styles'
 import * as naming from '../../constants'
-import { RootState } from '../../store/store'
 import * as routes from '../../routes/constantsRoutes'
 import { useNavigate } from 'react-router-dom'
-import * as Lockr from 'lockr'
-import { Users } from '../RegisterForm/types'
 import { loginRequest } from '../../hoc/AuthHoc/store/actions'
+import { getLoading } from '../../hoc/AuthHoc/store/selector'
 
 export const AuthForm: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { isLoading } = useAppSelector((state: RootState) => state.auth)
+  const isLoading = useAppSelector(getLoading)
   const navigate = useNavigate()
 
   const handleSubmit = (
     { login, password }: Values,
-    { setFieldError }: FormikHelpers<Values>
+    formikHelpers: FormikHelpers<Values>
   ) => {
-    dispatch(loginRequest({ login, password }))
-    if (login && password) {
-      const tempUsers: Users | null = Lockr.get('users')
-      if (tempUsers) {
-        const users = [...tempUsers?.students, ...tempUsers?.teachers]
-        const user = users?.find((el) => el.login === login)
-        if (user && user.password === password) {
-          Lockr.set('user', login)
-          navigate(routes.HOME)
-        }
-        if (user && user.password !== password)
-          setFieldError('password', naming.INCORRECT_PASSWORD)
-      }
-    }
+    dispatch(loginRequest({ login, password, formikProps: formikHelpers }))
   }
 
   const handleClickRegister = () => {
@@ -70,21 +55,22 @@ export const AuthForm: React.FC = () => {
               isError={!!errors.password && !!touched.password}
               errorText={errors.password}
             />
-
-            <Button
-              type="submit"
-              disabled={!(Object.keys(errors).length === 0)}
-              isLoading={isLoading}
-            >
-              {naming.LOGIN}
-            </Button>
-            <Button
-              onClick={handleClickRegister}
-              isSecondary
-              isLoading={isLoading}
-            >
-              {naming.REGISTER}
-            </Button>
+            <StyledButtonsContainer>
+              <Button
+                type="submit"
+                disabled={!(Object.keys(errors).length === 0)}
+                isLoading={isLoading}
+              >
+                {naming.LOGIN}
+              </Button>
+              <Button
+                onClick={handleClickRegister}
+                isSecondary
+                isLoading={isLoading}
+              >
+                {naming.REGISTER}
+              </Button>
+            </StyledButtonsContainer>
           </StyledForm>
         )}
       </Formik>

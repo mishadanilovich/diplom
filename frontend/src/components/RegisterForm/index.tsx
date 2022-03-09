@@ -1,54 +1,36 @@
 import React from 'react'
 import { Formik, FormikHelpers } from 'formik'
-import * as Lockr from 'lockr'
 import { Button } from '../Button'
-import { StyledInput } from '../StyledField'
-import { User, Users } from './types'
+import { StyledInput } from '../StyledInput'
+import { User } from './types'
 import { authValidationSchema } from './authFormValidation'
 import { AuthContainer, StyledForm } from './styles'
 import * as naming from '../../constants'
 import * as routes from '../../routes/constantsRoutes'
-import { RootState } from '../../store/store'
 import Select from '../Select'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../../store/hooks'
-import { RECURRING_MAIL } from '../../constants'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { registerRequest } from '../../hoc/AuthHoc/store/actions'
+import { getLoading } from '../../hoc/AuthHoc/store/selector'
 
 export const RegisterForm: React.FC = () => {
-  const { isLoading } = useAppSelector((state: RootState) => state.auth)
+  const dispatch = useAppDispatch()
+  const isLoading = useAppSelector(getLoading)
   const navigate = useNavigate()
 
   const handleSubmit = (
     { login, roles, password }: User,
-    { setFieldError }: FormikHelpers<User>
+    formikHelpers: FormikHelpers<User>
   ) => {
-    if (login && roles && password) {
-      const newUserType = roles === 'student' ? 'students' : 'teachers'
-      const users: Users | null = Lockr.get('users')
-
-      if (users) {
-        const user = [...users.students, ...users.teachers].find(
-          (el) => el.login === login
-        )
-        if (user) setFieldError('login', RECURRING_MAIL)
-        else {
-          users[newUserType] = [
-            ...users[newUserType],
-            { login, password, role: roles },
-          ]
-          Lockr.set('users', users)
-          handleClick()
-        }
-      } else {
-        const users: Users = {
-          students: [],
-          teachers: [],
-        }
-        users[newUserType] = [{ login, password, role: roles }]
-        Lockr.set('users', users)
-        handleClick()
-      }
-    }
+    dispatch(
+      registerRequest({
+        login,
+        roles,
+        password,
+        formikProps: formikHelpers,
+        navigate,
+      })
+    )
   }
 
   const handleClick = () => {

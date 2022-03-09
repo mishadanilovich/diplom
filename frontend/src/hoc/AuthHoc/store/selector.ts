@@ -4,7 +4,4 @@ import { RootState } from '../../../store/store'
 const getAuth = (state: RootState) => state.auth
 
 export const getLoading = createSelector([getAuth], (auth) => auth.isLoading)
-export const getTokenAndError = createSelector(
-  [getAuth],
-  ({ token, error }) => ({ token, error })
-)
+export const getUser = createSelector([getAuth], (auth) => auth.user)

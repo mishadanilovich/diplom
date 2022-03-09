@@ -4,7 +4,6 @@ import { Form } from 'formik'
 export const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
   width: 100%;
   max-width: 520px;
   padding: 40px 30px;
@@ -15,6 +14,7 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 20px;
 `
 
 export const StyledLabel = styled.label`
@@ -28,4 +28,9 @@ export const StyledLabel = styled.label`
   letter-spacing: 0;
   margin-right: auto;
   margin-bottom: 5px;
+`
+
+export const StyledButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `
