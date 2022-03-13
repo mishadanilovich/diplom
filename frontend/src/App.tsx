@@ -13,6 +13,10 @@ import {
   ProfilePage,
   ChaptersPage,
   TopicPage,
+  TheoryPage,
+  SchemaPage,
+  TestPage,
+  TaskPage,
 } from './routes'
 import { AuthHoc } from './hoc'
 import * as routes from './routes/constantsRoutes'
@@ -36,6 +40,10 @@ const App: React.FC = () => {
             <Route path={routes.HOME} element={<ChaptersPage />} />
             <Route path={routes.ROADMAP} element={<RoadmapPage />} />
             <Route path={routes.TOPIC_CARD} element={<TopicPage />} />
+            <Route path={routes.TOPIC_THEORY} element={<TheoryPage />} />
+            <Route path={routes.TOPIC_SCHEMA} element={<SchemaPage />} />
+            <Route path={routes.TOPIC_TEST} element={<TestPage />} />
+            <Route path={routes.TOPIC_TASK} element={<TaskPage />} />
             <Route path={routes.PROFILE} element={<ProfilePage />} />
             <Route path={routes.ERROR} element={<NotFoundPage />} />
           </Switch>

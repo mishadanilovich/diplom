@@ -8,6 +8,7 @@ import {
   Road,
   RoadmapContainer,
   RoadmapItem,
+  StyledTitle,
   SubmitButton,
 } from './styles'
 import { Add, Done, Remove } from '../../icons'
@@ -62,7 +63,7 @@ export const Roadmap = ({ chapter, user }: Props) => {
         </RoadmapContainer>
       ) : (
         <>
-          <h2>{title}</h2>
+          <StyledTitle>{title}</StyledTitle>
           <RoadmapContainer>
             {tempTopics.map(({ name, title, show }, i) => (
               <React.Fragment key={i}>

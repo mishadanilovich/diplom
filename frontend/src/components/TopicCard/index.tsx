@@ -10,7 +10,7 @@ export const TopicCard = ({ topic }: Props) => {
 
   return (
     <div style={{ height: '100%' }}>
-      <h2>{topic.title}</h2>
+      <h2 style={{ marginTop: '20px' }}>{topic.title}</h2>
       <ActionsContainer>
         {actions(navigate).map((el, i) => (
           <Button key={i} onClick={el.action}>

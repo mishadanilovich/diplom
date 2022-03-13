@@ -11,6 +11,10 @@ export const RoadmapContainer = styled.div`
   position: relative;
 `
 
+export const StyledTitle = styled.h2`
+  margin-top: 0;
+`
+
 export const RoadmapItem = styled.div`
   display: flex;
   align-items: center;
