@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { matchPath, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, matchPath } from 'react-router-dom'
 import * as Lockr from 'lockr'
 import {
   LeftContainer,
@@ -48,7 +48,8 @@ export const Header = () => {
       !user.secondName
     )
       return null
-    if (chapters?.length === 1) return null
+    if (matchPath({ path: routes.ROADMAP }, pathname) && chapters?.length === 1)
+      return null
     return true
   }, [user, chapters])
 

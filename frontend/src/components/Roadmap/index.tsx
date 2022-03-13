@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as naming from '../../constants'
 import {
   ControlButton,
@@ -21,6 +22,7 @@ export const Roadmap = ({ chapter, user }: Props) => {
   const { title, topics, name } = chapter
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(getLoading)
+  const navigate = useNavigate()
   const [tempTopics, setTempTopics] = useState<Topics>(topics)
   const isShowSubmitButton = useMemo(
     () => !isArrayEqual(topics, tempTopics),
@@ -47,9 +49,10 @@ export const Roadmap = ({ chapter, user }: Props) => {
       })
     )
 
-  // const handleTopicClick = () => {
-  //
-  // }
+  const handleTopicClick = (topicName: string) => {
+    console.log(topicName)
+    navigate(topicName)
+  }
 
   return (
     <>
@@ -61,10 +64,14 @@ export const Roadmap = ({ chapter, user }: Props) => {
         <>
           <h2>{title}</h2>
           <RoadmapContainer>
-            {tempTopics.map(({ title, show }, i) => (
+            {tempTopics.map(({ name, title, show }, i) => (
               <React.Fragment key={i}>
                 <RoadmapItem>
-                  <Item className="roadmap-item" show={show}>
+                  <Item
+                    className="roadmap-item"
+                    show={show}
+                    onClick={() => handleTopicClick(name)}
+                  >
                     {title}
                   </Item>
                   {user.role === naming.TEACHER && (

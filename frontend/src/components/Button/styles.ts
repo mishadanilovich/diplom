@@ -22,6 +22,7 @@ export const StyledButton = styled.button<Props>`
   line-height: 25px;
 
   &:focus {
+    outline: 2px solid black;
   }
 
   &:hover,
