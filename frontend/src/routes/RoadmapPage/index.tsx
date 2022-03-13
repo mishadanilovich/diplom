@@ -8,14 +8,6 @@ import { User, Users } from '../../hoc/AuthHoc/store/types'
 import * as naming from '../../constants'
 import { Topics } from './types'
 
-const mockTopics = [
-  { name: '1', title: 'Тема 1' },
-  { name: '2', title: 'Тема 2' },
-  { name: '3', title: 'Тема 3' },
-  { name: '4', title: 'Тема 4' },
-  { name: '5', title: 'Тема 5' },
-]
-
 export const RoadmapPage = () => {
   const user = useAppSelector<User | null>(getUser)
   const users = useMemo<Users | null>(() => Lockr.get('users'), [])
@@ -24,11 +16,13 @@ export const RoadmapPage = () => {
       return (
         users.teachers.find((el) => el.login === user.teacher)?.topics || null
       )
-    if (user?.role === naming.TEACHER)
-      return mockTopics.map((item) => ({
+    if (user?.role === naming.TEACHER) {
+      const topics = Array.from(naming.mockTopic.topics.values())
+      return topics.map((item) => ({
         ...item,
         checked: !!user.topics?.find((el) => el.name === item.name),
       }))
+    }
     return null
   }, [user, users])
 

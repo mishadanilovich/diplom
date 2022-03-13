@@ -51,6 +51,10 @@ export const Roadmap = ({ topics, user }: Props) => {
     }
   }
 
+  // const handleTopicClick = () => {
+  //
+  // }
+
   return (
     <>
       {!tempTopics?.length ? (
