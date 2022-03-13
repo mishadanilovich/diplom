@@ -19,7 +19,7 @@ export const RoadmapItem = styled.div`
   width: 100%;
 `
 
-export const Item = styled.div<{ checked: boolean }>`
+export const Item = styled.div<{ show: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@ export const Item = styled.div<{ checked: boolean }>`
   border-radius: 5px;
   background: ${({ theme }) => theme.colors.purple};
   transition: opacity 0.2s;
-  opacity: ${({ checked }) => (checked ? '100%' : '50%')};
+  opacity: ${({ show }) => (show ? '100%' : '50%')};
 `
 
 export const Road = styled.span`

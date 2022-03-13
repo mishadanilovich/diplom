@@ -39,14 +39,14 @@ export const TEACHER = 'teacher'
 
 export const FIRST_SIGN_IN = 'Заполните профиль!'
 
-export const mockTopic = {
+export const initialChapter = {
   name: 'graphTheory',
   title: 'Теория Графов',
-  topics: new Map([
-    ['1', { name: '1', title: 'Тема 1' }],
-    ['2', { name: '2', title: 'Тема 2' }],
-    ['3', { name: '3', title: 'Тема 3' }],
-    ['4', { name: '4', title: 'Тема 4' }],
-    ['5', { name: '5', title: 'Тема 5' }],
-  ]),
+  topics: [
+    { name: '1', title: 'Тема 1', show: true },
+    { name: '2', title: 'Тема 2', show: true },
+    { name: '3', title: 'Тема 3', show: true },
+    { name: '4', title: 'Тема 4', show: true },
+    { name: '5', title: 'Тема 5', show: true },
+  ],
 }

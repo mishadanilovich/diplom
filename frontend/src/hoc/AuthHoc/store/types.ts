@@ -1,4 +1,4 @@
-import { Topics } from '../../../routes/RoadmapPage/types'
+import { Chapters } from '../../../store/chaptersStore/types'
 
 export interface Student {
   login: string
@@ -11,11 +11,12 @@ export interface Teacher {
   login: string
   password: string
   role: string
+  chapters?: Chapters
 }
 
 export interface Users {
-  students?: User[]
-  teachers?: User[]
+  students: User[]
+  teachers: User[]
 }
 
 export interface AppState {
@@ -37,5 +38,5 @@ export interface User {
   role: string
   teacher?: string
   avatarURL?: string
-  topics?: Topics
+  chapters: Chapters
 }

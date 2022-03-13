@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { CHAPTERS_REDUCER } from './constants'
 import * as emptySagaActions from './actions'
-import { Chapter, Chapters, State } from './types'
+import { Chapter, Chapters, State, UpdateChaptersPayload } from './types'
 
 const initialState: State = {
   chapters: null,
@@ -11,11 +11,21 @@ export const ChaptersReducer = createSlice({
   name: CHAPTERS_REDUCER,
   initialState,
   reducers: {
-    reset: (state: State) => {
+    resetChapters: (state: State) => {
       state.chapters = null
     },
     setChapters: (state: State, { payload }: { payload: Chapters }) => {
       state.chapters = payload
+    },
+    updateChapter: (
+      state: State,
+      { payload }: { payload: UpdateChaptersPayload }
+    ) => {
+      const { chapterName, topics } = payload
+      if (state.chapters)
+        state.chapters = state.chapters.map((item) =>
+          item.name === chapterName ? { ...item, topics } : item
+        )
     },
     addChapter: (state: State, { payload }: { payload: Chapter }) => {
       if (state.chapters) state.chapters = [...state.chapters, payload]
@@ -29,6 +39,12 @@ export const ChaptersReducer = createSlice({
 
 const allActions = { ...ChaptersReducer.actions, ...emptySagaActions }
 
-export const { reset, setChapters, addChapter, removeChapter } = allActions
+export const {
+  resetChapters,
+  setChapters,
+  addChapter,
+  removeChapter,
+  updateChapter,
+} = allActions
 
 export default ChaptersReducer.reducer

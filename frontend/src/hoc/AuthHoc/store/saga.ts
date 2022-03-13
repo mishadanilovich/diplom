@@ -1,23 +1,25 @@
 import { takeLatest, put } from 'redux-saga/effects'
 import * as Lockr from 'lockr'
 import { identifyUser, loginRequest, registerRequest } from './actions'
-import { Users } from '../../../components/RegisterForm/types'
 import * as naming from '../../../constants'
 import * as routes from '../../../routes/constantsRoutes'
 import { Login, Register } from '../../../components/AuthForm/types'
-import { IdentifyUser, Student, Teacher } from './types'
+import { Users as RegisterUser } from '../../../components/RegisterForm/types'
+import { IdentifyUser, Student, Teacher, User, Users } from './types'
 import { setUserData } from './reducer'
-import { RECURRING_MAIL } from '../../../constants'
 import { Action } from '../../../store/types'
 import { request, setUser } from '../../../store/sagas'
+import { initializeChapters } from '../../../store/chaptersStore/saga'
 
 function* getUser({ payload }: Action<IdentifyUser>) {
   const { login } = payload || {}
-  const tempUsers = Lockr.get<Users>('users')
+  const tempUsers = Lockr.get<RegisterUser>('users')
   const users = [...tempUsers?.students, ...tempUsers?.teachers]
   if (login) {
-    const user = users.find((el) => el.login === login) as Teacher | Student
+    const user = users.find((el) => el.login === login) as User
     yield put(setUserData(user))
+
+    yield initializeChapters({ user, users: tempUsers as Users })
   }
 }
 
@@ -40,35 +42,45 @@ function* loginUser({ payload }: Action<Login>) {
 }
 
 function* registerUser({ payload }: Action<Register>) {
-  const { login, password, roles, formikProps, navigate } = payload || {}
-  if (login && roles && password && formikProps && navigate) {
-    const newUserType = roles === naming.STUDENT ? 'students' : 'teachers'
-    const users: Users | null = Lockr.get('users')
+  if (!payload) return
+  const { login, password, roles, formikProps, navigate } = payload
+  const newUserType = roles === naming.STUDENT ? 'students' : 'teachers'
+  const users: RegisterUser | null = Lockr.get('users')
 
-    if (users) {
-      const user = [...users.students, ...users.teachers].find(
-        (el) => el.login === login
-      )
-      if (user) formikProps.setFieldError('login', RECURRING_MAIL)
-      else {
+  if (users) {
+    const user = [...users.students, ...users.teachers].find(
+      (el) => el.login === login
+    )
+    if (user) formikProps.setFieldError('login', naming.RECURRING_MAIL)
+    else {
+      if (newUserType === 'students')
         users[newUserType] = [
           ...users[newUserType],
           { login, password, role: roles },
         ]
-        Lockr.set('users', users)
-        yield request()
-        navigate(routes.AUTH)
-      }
-    } else {
-      const users: Users = {
-        students: [],
-        teachers: [],
-      }
-      users[newUserType] = [{ login, password, role: roles }]
+      else
+        users[newUserType] = [
+          ...users[newUserType],
+          { login, password, role: roles, chapters: [naming.initialChapter] },
+        ]
       Lockr.set('users', users)
       yield request()
       navigate(routes.AUTH)
     }
+  } else {
+    const users: RegisterUser = {
+      students: [],
+      teachers: [],
+    }
+    if (newUserType === 'students')
+      users[newUserType] = [{ login, password, role: roles }]
+    else
+      users[newUserType] = [
+        { login, password, role: roles, chapters: [naming.initialChapter] },
+      ]
+    Lockr.set('users', users)
+    yield request()
+    navigate(routes.AUTH)
   }
 }
 

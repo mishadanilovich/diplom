@@ -17,39 +17,35 @@ import { Topics } from '../../routes/RoadmapPage/types'
 import { isArrayEqual } from '../../helpers'
 import { updateTeacherTopics } from './store/actions'
 
-export const Roadmap = ({ topics, user }: Props) => {
+export const Roadmap = ({ chapter, user }: Props) => {
+  const { title, topics, name } = chapter
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(getLoading)
-  const [tempTopics, setTempTopics] = useState<Topics | null>(topics)
+  const [tempTopics, setTempTopics] = useState<Topics>(topics)
   const isShowSubmitButton = useMemo(
     () => !isArrayEqual(topics, tempTopics),
-    [tempTopics]
+    [tempTopics, topics]
   )
 
   const handleControllerClick = useCallback(
     (index: number) => {
-      if (tempTopics)
-        setTempTopics(
-          tempTopics.map((el, i) =>
-            i === index ? { ...el, checked: !el.checked } : el
-          )
+      setTempTopics(
+        tempTopics.map((el, i) =>
+          i === index ? { ...el, show: !el.show } : el
         )
+      )
     },
     [tempTopics]
   )
 
-  const handleSubmit = () => {
-    if (tempTopics) {
-      const topicsData = tempTopics
-        .filter((el) => el.checked)
-        .map((topic) => {
-          // eslint-disable-next-line no-unused-vars
-          const { checked, ...data } = topic
-          return data
-        })
-      dispatch(updateTeacherTopics({ topics: topicsData, login: user.login }))
-    }
-  }
+  const handleSubmit = () =>
+    dispatch(
+      updateTeacherTopics({
+        topics: tempTopics,
+        login: user.login,
+        chapterName: name,
+      })
+    )
 
   // const handleTopicClick = () => {
   //
@@ -63,21 +59,18 @@ export const Roadmap = ({ topics, user }: Props) => {
         </RoadmapContainer>
       ) : (
         <>
-          <h2>{naming.APPLICATION_NAME}</h2>
+          <h2>{title}</h2>
           <RoadmapContainer>
-            {tempTopics.map(({ title, checked }, i) => (
+            {tempTopics.map(({ title, show }, i) => (
               <React.Fragment key={i}>
                 <RoadmapItem>
-                  <Item
-                    className="roadmap-item"
-                    checked={typeof checked === 'boolean' ? checked : true}
-                  >
+                  <Item className="roadmap-item" show={show}>
                     {title}
                   </Item>
                   {user.role === naming.TEACHER && (
                     <ControlButton onClick={() => handleControllerClick(i)}>
-                      {!checked && <Add />}
-                      {checked && <Remove />}
+                      {!show && <Add />}
+                      {show && <Remove />}
                     </ControlButton>
                   )}
                 </RoadmapItem>

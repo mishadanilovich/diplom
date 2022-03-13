@@ -1,7 +1,7 @@
-import { Topics } from '../../routes/RoadmapPage/types'
 import { User } from '../../hoc/AuthHoc/store/types'
+import { Chapter } from '../../store/chaptersStore/types'
 
 export interface Props {
-  topics: Topics | null
+  chapter: Chapter
   user: User
 }

@@ -15,12 +15,15 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { getUser } from '../../hoc/AuthHoc/store/selector'
 import { ProfileUser } from '../ProfileForm/types'
 import { reset } from '../../hoc/AuthHoc/store/reducer'
+import { resetChapters } from '../../store/chaptersStore/reducer'
+import { getChaptersData } from '../../store/chaptersStore/selectors'
 
 export const Header = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const dispatch = useAppDispatch()
   const user = useAppSelector(getUser) as ProfileUser
+  const chapters = useAppSelector(getChaptersData)
 
   const handleArrowBackClick = () => {
     navigate(-1)
@@ -33,6 +36,7 @@ export const Header = () => {
   const handleLogout = () => {
     Lockr.rm('user')
     dispatch(reset())
+    dispatch(resetChapters())
     navigate(routes.AUTH)
   }
 
@@ -44,8 +48,9 @@ export const Header = () => {
       !user.secondName
     )
       return null
+    if (chapters?.length === 1) return null
     return true
-  }, [user])
+  }, [user, chapters])
 
   return (
     <StyledHeader>

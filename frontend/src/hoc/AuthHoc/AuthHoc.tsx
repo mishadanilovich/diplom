@@ -6,11 +6,14 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { getUser } from './store/selector'
 import { identifyUser } from './store/actions'
+import { getChaptersData } from '../../store/chaptersStore/selectors'
+import { Loader } from '../../components'
 
 export const AuthHoc = ({ children }: Props): JSX.Element => {
   const navigate = useNavigate()
-  const user = useAppSelector(getUser)
   const dispatch = useAppDispatch()
+  const user = useAppSelector(getUser)
+  const chapters = useAppSelector(getChaptersData)
   const isAuth = Lockr.get<string | null>('user')
 
   console.log(user)
@@ -21,9 +24,11 @@ export const AuthHoc = ({ children }: Props): JSX.Element => {
 
   useEffect(() => {
     if (!isAuth) navigate(routes.AUTH)
-    else if (user && user.firstName && user.secondName) navigate(routes.HOME)
-    else navigate(routes.PROFILE)
-  }, [user])
+    else if (user && user.firstName && user.secondName && chapters) {
+      if (chapters.length === 1) return navigate('/roadmap/' + chapters[0].name)
+      navigate(routes.HOME)
+    } else navigate(routes.PROFILE)
+  }, [user, chapters])
 
-  return <>{children}</>
+  return <>{!user && isAuth ? <Loader /> : children}</>
 }

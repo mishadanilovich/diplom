@@ -5,6 +5,7 @@ import { Action } from '../../../store/types'
 import { User, Users } from '../../../hoc/AuthHoc/store/types'
 import * as naming from '../../../constants'
 import { setUser } from '../../../store/sagas'
+import { initializeChapters } from '../../../store/chaptersStore/saga'
 
 const updateObjectByDifferences = (preData: any, newData: any) => {
   const result = { ...preData }
@@ -29,6 +30,7 @@ function* updateUserData({ payload }: Action<User>) {
   })
   Lockr.set('users', users)
   yield setUser(userNewData)
+  yield initializeChapters({ user: userNewData, users })
 }
 
 export function* profileSaga() {

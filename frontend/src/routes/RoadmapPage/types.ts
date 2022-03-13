@@ -1,7 +1,7 @@
 export interface Topic {
   name: string
   title: string
-  checked?: boolean
+  show: boolean
   iconUrl?: string
 }
 

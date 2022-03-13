@@ -11,6 +11,7 @@ import {
   AuthPage,
   RoadmapPage,
   ProfilePage,
+  ChaptersPage,
 } from './routes'
 import { AuthHoc } from './hoc'
 import * as routes from './routes/constantsRoutes'
@@ -31,7 +32,8 @@ const App: React.FC = () => {
           <Switch>
             <Route path={routes.AUTH} element={<AuthPage />} />
             <Route path={routes.REGISTER} element={<RegisterPage />} />
-            <Route path={routes.HOME} element={<RoadmapPage />} />
+            <Route path={routes.HOME} element={<ChaptersPage />} />
+            <Route path={routes.ROADMAP} element={<RoadmapPage />} />
             <Route path={routes.PROFILE} element={<ProfilePage />} />
             <Route path={routes.ERROR} element={<NotFoundPage />} />
           </Switch>
