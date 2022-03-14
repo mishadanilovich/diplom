@@ -88,6 +88,22 @@ export const GlobalStyle = createGlobalStyle`
     
     margin-bottom: 30px;
   }
+
+  h3 {
+    font-size: 22px;
+    line-height: 28px;
+    font-style: normal;
+    font-weight: 600;
+    
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+  }
   
   button {
     border: none;
