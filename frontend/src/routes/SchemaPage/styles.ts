@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { Header } from '../../components'
 
-export const StyledHeader = styled(Header)`
+export const StyledTitle = styled.h2`
   margin-bottom: 0;
 `

@@ -9,6 +9,8 @@ export const FancyBoxContainer = styled.div`
 `
 
 export const ThumbnailImage = styled.img`
-  width: 650px;
+  width: 620px;
+  height: 300px;
   transform: rotate(90deg);
+  border: 1px solid ${({ theme }) => theme.colors.black};
 `

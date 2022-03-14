@@ -5,9 +5,7 @@ import { Props } from './types'
 export const FancyBox = ({ url }: Props) => {
   return (
     <FancyBoxContainer>
-      <div>
-        <ThumbnailImage src={url} />
-      </div>
+      <ThumbnailImage src={url} />
     </FancyBoxContainer>
   )
 }

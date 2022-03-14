@@ -4,6 +4,7 @@ import { fakeRequestsSaga } from './fakeRequests/saga'
 import { profileSaga } from '../components/ProfileForm/store/saga'
 import { topicsSaga } from '../components/Roadmap/store/saga'
 import { chaptersSaga } from './chaptersStore/saga'
+import { testSaga } from '../components/Test/store/saga'
 
 function* Saga() {
   yield all([
@@ -12,6 +13,7 @@ function* Saga() {
     fork(profileSaga),
     fork(topicsSaga),
     fork(chaptersSaga),
+    fork(testSaga),
   ])
 }
 

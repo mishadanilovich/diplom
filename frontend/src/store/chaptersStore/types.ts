@@ -1,5 +1,14 @@
 import { User, Users } from '../../hoc/AuthHoc/store/types'
 
+export interface Mark {
+  userLogin: string
+  teacherLogin: string
+  chapterName: string
+  topicName: string
+  taskMark: number | null
+  testMark: number | null
+}
+
 export interface Topic {
   name: string
   title: string

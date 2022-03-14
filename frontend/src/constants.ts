@@ -11,6 +11,7 @@ export const LOGOUT = 'Выйти'
 export const REGISTER = 'Регистрация'
 export const BACK = 'Назад'
 export const CONTINUE = 'Продолжить'
+export const CHECK = 'Проверить'
 export const TAKE_TEST = 'Пройти тест'
 export const EMAIL_LABEL = 'E-mail'
 export const PASSWORD_LABEL = 'Пароль'
@@ -26,10 +27,8 @@ export const ROLES = [
   { value: 'teacher', display: 'Преподаватель' },
 ]
 
-export const SUBMIT_CONSOLE = 'Отправить'
-export const FORMAT_CONSOLE = 'Форматировать'
-
 export const APPLICATION_NAME = 'Теория Графов'
+export const SCHEMA_TITLE = 'Опорная схема'
 
 export const NOT_FOUND_PAGE_STATUS = '404'
 export const NOT_FOUND_PAGE_TEXT = 'Page not found'
