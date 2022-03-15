@@ -8,5 +8,6 @@ export const TOPIC_THEORY = `${TOPIC_CARD}/theory`
 export const TOPIC_SCHEMA = `${TOPIC_CARD}/schema`
 export const TOPIC_TEST = `${TOPIC_CARD}/test`
 export const TOPIC_TASK = `${TOPIC_CARD}/task`
+export const TOPIC_MARKS = `${TOPIC_CARD}/marks`
 export const NOT_FOUND = '/not_found'
 export const ERROR = '*'

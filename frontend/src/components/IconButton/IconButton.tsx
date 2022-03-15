@@ -1,14 +1,16 @@
 import React from 'react'
 import { StyledButton } from './styles'
 import { IProps } from './types'
-import { ACCOUNT_CIRCLE, LOGOUT } from '../../icons/constants'
-import { AccountCircle, Logout } from '../../icons'
+import * as icons from '../../icons/constants'
+import { AccountCircle, Logout, Students } from '../../icons'
 
 const getIcon = (iconName: string): JSX.Element | undefined => {
   switch (iconName) {
-    case ACCOUNT_CIRCLE:
+    case icons.ACCOUNT_CIRCLE:
       return <AccountCircle />
-    case LOGOUT:
+    case icons.STUDENTS:
+      return <Students />
+    case icons.LOGOUT:
       return <Logout />
     default:
       return

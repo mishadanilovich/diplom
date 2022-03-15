@@ -19,6 +19,8 @@ export const RightContainer = styled.div`
 
 export const LeftContainer = styled.div`
   display: flex;
+  align-items: center;
+  column-gap: 22px;
 `
 
 export const StyledProfileButton = styled(IconButton)`
