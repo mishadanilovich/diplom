@@ -1,11 +1,13 @@
 import React from 'react'
-import { Header } from '../../components'
+import { Header, Loader } from '../../components'
 
 export const TaskPage = () => {
   return (
     <div className="layout-container">
       <Header />
-      Интерактивное задание
+      <div className="center">
+        <Loader />
+      </div>
     </div>
   )
 }

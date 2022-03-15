@@ -39,15 +39,25 @@ export const TEACHER = 'teacher'
 
 export const FIRST_SIGN_IN = 'Заполните профиль!'
 
+export const PRIMA_KRASKALA = 'prima_kraskala'
 export const initialChapter = {
   name: 'graphTheory',
   title: 'Теория Графов',
   topics: [
-    { name: '1', title: 'Тема 1', show: true },
-    { name: '2', title: 'Тема 2', show: true },
-    { name: '3', title: 'Тема 3', show: true },
-    { name: '4', title: 'Тема 4', show: true },
-    { name: '5', title: 'Тема 5', show: true },
+    {
+      name: PRIMA_KRASKALA,
+      title: 'Остовное дерево. Алгоритмы Прима и Краскала',
+      show: true,
+    },
+    { name: 'floyd', title: 'Алгоритм Флойда', show: true },
+    {
+      name: 'streams',
+      title: 'Потоки на сетях. Задача о максимальном потоке',
+      show: true,
+    },
+    { name: 'ford_fulkerson', title: 'Алгоритм Форда-Фалкерсона', show: true },
+    { name: 'basaker-guen', title: 'Алгоритм Басакера-Гоуэна', show: true },
+    { name: 'klein', title: 'Алгоритм Клейна', show: true },
   ],
 }
 

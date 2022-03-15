@@ -9,17 +9,19 @@ export const TheoryContainer = styled.div`
   .swiper-pagination {
     bottom: -3px;
   }
-`
 
-export const SwiperItem = styled.div`
-  height: 220px;
-  padding-bottom: 7px;
-  object-fit: fill;
-`
+  u {
+    font-style: italic;
+  }
 
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  p,
+  h3 {
+    text-indent: 25px;
+  }
+
+  p {
+    text-align: justify;
+  }
 `
 
 export const StyledButton = styled(Button)`

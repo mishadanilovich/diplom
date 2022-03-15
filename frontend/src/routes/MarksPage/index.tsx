@@ -22,8 +22,8 @@ export const MarksPage = () => {
     const students = Lockr.get<Users>('users').students
     return marks.map(({ testMark, taskMark, userLogin }) => {
       const student = students.find((el) => el.login === userLogin)
-      const username = `${student?.firstName || ''} ${
-        student?.secondName || ''
+      const username = `${student?.secondName || ''} ${
+        student?.firstName || ''
       }`
       return {
         testMark,

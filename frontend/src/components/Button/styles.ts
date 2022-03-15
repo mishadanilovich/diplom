@@ -21,16 +21,20 @@ export const StyledButton = styled.button<Props>`
   font-size: ${({ isSecondary = false }) => (isSecondary ? '14px' : '18px')};
   line-height: 25px;
 
+  transition: all 0.1s;
+
   &:focus {
   }
 
   &:focus,
   &:hover,
   &:active {
-    outline: 2px solid ${({ theme }) => theme.colors.orange};
+    outline: ${({ isSecondary = false, theme }) =>
+      isSecondary ? 'none' : `2px solid ${theme.colors.orange}`};
   }
 
   &:hover {
+    cursor: pointer;
   }
 
   &:active {
@@ -38,5 +42,7 @@ export const StyledButton = styled.button<Props>`
 
   &:disabled {
     opacity: 70%;
+    cursor: default;
+    outline: none;
   }
 `

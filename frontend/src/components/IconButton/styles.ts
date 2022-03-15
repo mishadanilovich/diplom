@@ -8,4 +8,8 @@ export const StyledButton = styled.button`
   height: 44px;
   background: ${(props) => props.theme.colors.gray};
   border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `

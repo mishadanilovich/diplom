@@ -5,7 +5,7 @@ export const RoadmapContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 49px 0;
+  padding: 0 49px 22px;
   height: 100%;
 
   position: relative;
@@ -21,6 +21,10 @@ export const RoadmapItem = styled.div`
   justify-content: center;
   min-height: 70px;
   width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const Item = styled.div<{ show: boolean }>`
@@ -32,6 +36,8 @@ export const Item = styled.div<{ show: boolean }>`
   border-radius: 5px;
   background: ${({ theme }) => theme.colors.purple};
   transition: opacity 0.2s;
+  padding: 10px;
+  text-align: center;
   opacity: ${({ show }) => (show ? '100%' : '50%')};
 `
 

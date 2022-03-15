@@ -96,7 +96,7 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
     font-weight: 600;
     
-    margin-bottom: 10px;
+    margin: 10px 0;
   }
   
   p {
@@ -110,6 +110,10 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     background: none;
+  }
+  
+  svg:hover {
+    cursor: pointer;
   }
   
   .layout-container {
