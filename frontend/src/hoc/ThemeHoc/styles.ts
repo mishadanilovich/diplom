@@ -8,6 +8,7 @@ export const theme = {
     gray: '#E1E1E1',
     red: '#CF2C00',
     green: '#30B800',
+    orange: '#E59700',
     lightBlue: '#EDF6FF',
     lightGray: '#F3F2F2',
     darkGray: 'rgba(71, 71, 71)',
@@ -129,5 +130,13 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 `

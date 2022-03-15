@@ -9,11 +9,11 @@ export const TopicCard = ({ topic }: Props) => {
   const navigate = useNavigate()
 
   return (
-    <div style={{ height: '100%' }}>
-      <h2 style={{ marginTop: '20px' }}>{topic.title}</h2>
+    <div>
+      <h2 style={{ margin: '20px 0 0' }}>{topic.title}</h2>
       <ActionsContainer>
         {actions(navigate).map((el, i) => (
-          <Button key={i} onClick={el.action}>
+          <Button key={i} onClick={el.action} style={{ height: '60px' }}>
             {el.title}
           </Button>
         ))}

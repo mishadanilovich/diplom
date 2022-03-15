@@ -35,6 +35,7 @@ type Chapters = Chapter[]
 
 export interface State {
   chapters: Chapters | null
+  marks: Mark[] | null
 }
 
 export type { Chapters }

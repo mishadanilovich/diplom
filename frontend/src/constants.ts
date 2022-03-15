@@ -50,3 +50,8 @@ export const initialChapter = {
     { name: '5', title: 'Тема 5', show: true },
   ],
 }
+
+export const USERNAME_COLUMN = 'Никнейм'
+export const TEST_MARK_COLUMN = 'Тест'
+export const TASK_MARK_COLUMN = 'Интерактив'
+export const NO_MARKS = 'Нет оценок 😔'

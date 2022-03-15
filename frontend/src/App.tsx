@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Routes as Switch,
   Route,
 } from 'react-router-dom'
+import * as Lockr from 'lockr'
 import styled from 'styled-components'
 import {
   NotFoundPage,
@@ -17,9 +18,14 @@ import {
   SchemaPage,
   TestPage,
   TaskPage,
+  MarksPage,
 } from './routes'
 import { AuthHoc } from './hoc'
 import * as routes from './routes/constantsRoutes'
+import { useAppDispatch, useAppSelector } from './store/hooks'
+import { setMarks } from './store/chaptersStore/reducer'
+import { Mark } from './store/chaptersStore/types'
+import { getUser } from './hoc/AuthHoc/store/selector'
 
 const AppContainer = styled.div`
   display: flex;
@@ -30,6 +36,14 @@ const AppContainer = styled.div`
 `
 
 const App: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const user = useAppSelector(getUser)
+
+  useEffect(() => {
+    const marks = Lockr.get<Mark[] | null>('marks')
+    dispatch(setMarks(marks))
+  }, [user])
+
   return (
     <AppContainer>
       <Router>
@@ -45,6 +59,7 @@ const App: React.FC = () => {
             <Route path={routes.TOPIC_TEST} element={<TestPage />} />
             <Route path={routes.TOPIC_TASK} element={<TaskPage />} />
             <Route path={routes.PROFILE} element={<ProfilePage />} />
+            <Route path={routes.TOPIC_MARKS} element={<MarksPage />} />
             <Route path={routes.ERROR} element={<NotFoundPage />} />
           </Switch>
         </AuthHoc>

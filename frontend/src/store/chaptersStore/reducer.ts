@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { CHAPTERS_REDUCER } from './constants'
 import * as emptySagaActions from './actions'
-import { Chapter, Chapters, State, UpdateChaptersPayload } from './types'
+import { Chapter, Chapters, Mark, State, UpdateChaptersPayload } from './types'
 
 const initialState: State = {
   chapters: null,
+  marks: null,
 }
 
 export const ChaptersReducer = createSlice({
@@ -34,6 +35,9 @@ export const ChaptersReducer = createSlice({
       if (state.chapters)
         state.chapters = state.chapters.filter((el) => el.name !== payload)
     },
+    setMarks: (state: State, { payload }: { payload: Mark[] | null }) => {
+      state.marks = payload
+    },
   },
 })
 
@@ -45,6 +49,7 @@ export const {
   addChapter,
   removeChapter,
   updateChapter,
+  setMarks,
 } = allActions
 
 export default ChaptersReducer.reducer
