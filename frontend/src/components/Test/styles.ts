@@ -43,6 +43,7 @@ export const AnswerSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  row-gap: 10px;
   height: 100%;
 `
 

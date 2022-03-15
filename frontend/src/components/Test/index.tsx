@@ -20,42 +20,45 @@ import { STUDENT } from '../../constants'
 
 const questions = [
   {
-    questionText: 'What is the capital of France?',
+    questionText:
+      'Минимальное остовное дерево в связанном взвешенном неориентированном графе - это',
     answerOptions: [
       {
-        answerText: 'New dsafasdfdsafasdfsdfasdfsafasdfdsfds York',
+        answerText:
+          'остовное дерево этого графа, имеющее минимальный возможный вес, где под весом дерева понимается сумма весов входящих в него рёбер',
+        isCorrect: true,
+      },
+      {
+        answerText:
+          'остовное дерево этого графа, имеющее максимальный возможный вес, где под весом дерева понимается сумма весов входящих в него рёбер',
         isCorrect: false,
       },
-      { answerText: 'London', isCorrect: false },
-      { answerText: 'Paris', isCorrect: true },
-      { answerText: 'Dublin', isCorrect: false },
+      {
+        answerText:
+          'остовное дерево этого графа, имеющее средний возможный вес',
+        isCorrect: false,
+      },
     ],
   },
   {
-    questionText: 'Who is CEO of Tesla?',
+    questionText: 'Критерий минимальности остова: ',
     answerOptions: [
-      { answerText: 'Jeff Bezos', isCorrect: false },
-      { answerText: 'Elon Musk', isCorrect: true },
-      { answerText: 'Bill Gates', isCorrect: false },
-      { answerText: 'Tony Stark', isCorrect: false },
-    ],
-  },
-  {
-    questionText: 'The iPhone was created by which company?',
-    answerOptions: [
-      { answerText: 'Apple', isCorrect: true },
-      { answerText: 'Intel', isCorrect: false },
-      { answerText: 'Amazon', isCorrect: false },
-      { answerText: 'Microsoft', isCorrect: false },
-    ],
-  },
-  {
-    questionText: 'How many Harry Potter books are there?',
-    answerOptions: [
-      { answerText: '1', isCorrect: false },
-      { answerText: '4', isCorrect: false },
-      { answerText: '6', isCorrect: false },
-      { answerText: '7', isCorrect: true },
+      {
+        answerText:
+          'Для любого ребра, не принадлежащего остову, цикл, образуемый этим ребром при добавлении к остову, содержит рёбер тяжелее этого ребра',
+        isCorrect: false,
+      },
+      {
+        answerText:
+          'Для одного ребра, не принадлежащего остову, цикл, образуемый этим ребром при добавлении к остову, не содержит рёбер тяжелее этого ребра',
+        isCorrect: false,
+      },
+      {
+        answerText:
+          'Для любого ребра, не принадлежащего остову, цикл, образуемый этим ребром при добавлении к остову, не содержит рёбер тяжелее этого ребра',
+        isCorrect: true,
+      },
+      { answerText: 'Нет критериев', isCorrect: false },
     ],
   },
 ]
