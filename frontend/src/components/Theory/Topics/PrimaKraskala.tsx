@@ -9,6 +9,10 @@ const images = [
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/4x4_grid_spanning_tree.svg/800px-4x4_grid_spanning_tree.svg.png',
     description: 'Остовное дерево',
   },
+  {
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Minimum_spanning_tree.svg/300px-Minimum_spanning_tree.svg.png',
+    description: 'Остовное дерево',
+  },
 ]
 
 const prima = [
