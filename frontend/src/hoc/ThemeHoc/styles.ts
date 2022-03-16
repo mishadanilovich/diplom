@@ -143,4 +143,10 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+  
+  .flex-center-horizontal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 `

@@ -42,7 +42,7 @@ export const MarksPage = () => {
   ) : (
     <div className="layout-container">
       <Header />
-      <MarksTable data={data} />
+      <MarksTable data={data || []} />
     </div>
   )
 }

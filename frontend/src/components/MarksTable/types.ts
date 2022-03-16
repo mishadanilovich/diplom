@@ -5,5 +5,5 @@ export interface DataItem {
 }
 
 export interface Props {
-  data: DataItem[] | null
+  data: DataItem[]
 }

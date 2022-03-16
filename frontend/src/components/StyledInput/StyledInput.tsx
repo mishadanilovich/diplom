@@ -28,7 +28,13 @@ const StyledInput = React.memo(
           </StyledDiv>
         )}
         <div style={{ position: 'relative' }}>
-          <StyledField id={id} name="login" isError={isError} {...props} />
+          <StyledField
+            id={id}
+            name="login"
+            autocomplete="off"
+            isError={isError}
+            {...props}
+          />
           {children}
         </div>
         {isError && errorText && <StyledErrorText>{errorText}</StyledErrorText>}
