@@ -50,10 +50,7 @@ export const Roadmap = ({ chapter, user }: Props) => {
       })
     )
 
-  const handleTopicClick = (topicName: string) => {
-    console.log(topicName)
-    navigate(topicName)
-  }
+  const handleTopicClick = (topicName: string) => navigate(topicName)
 
   return (
     <>

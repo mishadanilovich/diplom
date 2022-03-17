@@ -88,7 +88,7 @@ export const Test = ({ data }: Props) => {
           setTestMark({
             userLogin: user.login,
             teacherLogin: user.teacher as string,
-            mark,
+            mark: `${mark}/${questions.length}`,
             quizType: 'test',
             chapterName,
             topicName,

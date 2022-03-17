@@ -16,8 +16,6 @@ export const AuthHoc = ({ children }: Props): JSX.Element => {
   const chapters = useAppSelector(getChaptersData)
   const isAuth = Lockr.get<string | null>('user')
 
-  console.log(user)
-
   useEffect(() => {
     if (isAuth) dispatch(identifyUser({ login: isAuth }))
   }, [isAuth])

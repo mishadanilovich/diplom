@@ -3,6 +3,6 @@ export interface UpdateMark {
   teacherLogin: string
   chapterName: string
   topicName: string
-  mark: number
+  mark: string
   quizType: string
 }

@@ -9,7 +9,6 @@ function* updateMark({ payload }: Action<UpdateMark>) {
   if (!payload) return
   const marks = Lockr.get<Mark[]>('marks')
   if (marks) {
-    console.log(1)
     const userPrevMarks = marks.find(
       (el) =>
         el.userLogin === payload.userLogin &&
@@ -17,7 +16,6 @@ function* updateMark({ payload }: Action<UpdateMark>) {
         el.topicName === payload.topicName
     )
     if (userPrevMarks) {
-      console.log(2)
       Lockr.set(
         'marks',
         marks.map((el) =>
@@ -33,7 +31,6 @@ function* updateMark({ payload }: Action<UpdateMark>) {
         )
       )
     } else {
-      console.log(3)
       const { mark, quizType, ...data } = payload
       Lockr.set('marks', [
         ...marks,
@@ -45,7 +42,6 @@ function* updateMark({ payload }: Action<UpdateMark>) {
       ])
     }
   } else {
-    console.log(4)
     const { mark, quizType, ...data } = payload
     Lockr.set('marks', [
       {
