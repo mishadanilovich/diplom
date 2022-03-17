@@ -1,12 +1,12 @@
 import React from 'react'
-import { Header, Loader } from '../../components'
+import { Header, InteractiveApp } from '../../components'
 
 export const TaskPage = () => {
   return (
     <div className="layout-container">
       <Header />
       <div className="center">
-        <Loader />
+        <InteractiveApp />
       </div>
     </div>
   )
